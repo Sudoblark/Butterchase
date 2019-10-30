@@ -15,4 +15,4 @@ while(p.health > 0):
         commandFound = True
         break
     if not commandFound:
-      print ("%s doesn't understand the suggestion.", p.name)
+      print ("%s doesn't understand the suggestion." % p.name)

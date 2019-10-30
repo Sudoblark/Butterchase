@@ -19,6 +19,7 @@ class Player(Character):
         self.enemy = None
         self.state = CharacterStates.Normal
         self.ineffectiveAttacks = False
+        self.isTired = False
     # Quit option
     def quit(self):
         print("%s has died of dysentery.\n" % self.name)
@@ -29,16 +30,22 @@ class Player(Character):
     # Status option
     def status(self):
         print("%s's health: %d/%d" % (self.name, self.health, self.health_max))
+        print("Is %s tired: %s" % (self.name, self.isTired))
     # tired option
     def tired(self):
-        print("%s feels tired." %  (self.name))
+        if self.isTired != True:
+            self.isTired = True
+            print("%s feels tired." %  (self.name))
     # Rest option
     def rest(self):
         if self.state != CharacterStates.Normal:
             print("%s can't rest right now!" %(self.name))
             self.enemy_attacks()
         else:
+            # Rest up
             print("%s rests" % (self.name))
+            # Clear tired state
+            self.isTired = False
             if self.health < self.health_max:
                 # If not at full health then increment by one after rest
                 self.health = self.health + 1
@@ -58,6 +65,7 @@ class Player(Character):
             else:
                 if randint(0,1):
                     self.tired()
+                print("%s wanders" % self.name)
     # Run away!
     def flee(self):
         if self.state != CharacterStates.Fight:
@@ -84,7 +92,7 @@ class Player(Character):
         if self.state != CharacterStates.Fight:
             print("%s swats the air, without any noticable results. The cave walls offer silent judgment on their life choices." % self.name)
         else:
-            if self.do_damage(self.enemy):
+            if self.do_damage(self.enemy, self.isTired):
                 print("%s executes %s!" % (self.name, self.enemy.name))
                 self.enemy = None
                 self.state = CharacterStates.Normal
@@ -94,12 +102,9 @@ class Player(Character):
                     print("%s feels stronger!" % (self.name))
             else:
                 self.enemy_attacks()
-    
-
-
     # Enemy attack option
     def enemy_attacks(self):
-        if self.enemy.do_damage(self):
+        if self.enemy.do_damage(self, False):
             print("%s was slaughtered by %s!!" % (self.name, self.enemy.name))
 
 

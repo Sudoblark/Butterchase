@@ -32,6 +32,9 @@ Steve foolishly enters a dark cave, seeking adventure...
 >
 ```
 
+## Mechanics
+- If the player is tired then they do half damage
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

@@ -23,10 +23,17 @@ class Character:
         self.state = CharacterStates.Normal
 
     # Method to allow all characters to attack
-    def do_damage(self, enemy):
+    def do_damage(self, enemy, isTired):
+        # Calculate damage
         damage = randint(self.minAttack, self.maxAttack)
+        # If char is tired then half damage
+        if isTired:
+            damage = damage / 2
+        # Calculcate enemy new health
         enemy.health = enemy.health - damage
+        # Print
         self.print_damage(enemy, damage)
+        # Return if dead
         return enemy.health <= 0
     # Method to print attack message
     def print_damage(self, enemy, damage):
