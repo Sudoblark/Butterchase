@@ -2,6 +2,7 @@
 ## Goblin
 Health: Between 1 and 10
 Attack: Between 1 and 5
+Ineffective Attacks: True
 
 ## Goatman
 Health: Between 3 and 15
