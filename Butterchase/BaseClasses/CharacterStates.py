@@ -5,3 +5,4 @@ class CharacterStates(Enum):
     Normal = 1
     Exploring = 2
     Fight = 3
+    Dead = 4
