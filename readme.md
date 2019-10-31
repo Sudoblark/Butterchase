@@ -18,18 +18,37 @@ The game just uses basic print commands and some default Python modules.
 Usage is as simple as:
 
 - Clone repo
-```
+```cmd
 git clone https://github.com/Sudoblark/Butterchase.git
 
 ```
 - Run game.py
-```
-Butterchase\game.py
+```cmd
+c:\Users\Administrator\Documents\GitHub\Butterchase>py Butterchase\Game.py
 What is your character's name? Steve
 type help to get a list of actions
 
 Steve foolishly enters a dark cave, seeking adventure...
->
+> help
+dict_keys(['quit', 'help', 'status', 'rest', 'explore', 'flee', 'attack'])
+> explore
+Steve wanders
+> explore
+Steve wanders
+> explore
+Steve encounters Steve the test goblin!
+> attack
+Steve hurts Steve the test goblin!
+Steve executes Steve the test goblin!
+Steve feels stronger!
+> status
+Steve's health: 11/11
+Is Steve tired: False
+> flee
+Steve runs around hopelessly in circles for a while.
+Steve feels tired.
+> quit
+Steve has died of dysentery.
 ```
 
 ## Mechanics
