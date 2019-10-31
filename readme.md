@@ -35,6 +35,50 @@ Steve foolishly enters a dark cave, seeking adventure...
 ## Mechanics
 - If the player is tired then they do half damage
 
+## Tests
+- Executing Butterchase\EnemyClasses\ClassSheets\Util.py will test the ReturnName function on all ClassSheets. For example:
+
+```cmd
+c:\Users\Administrator\Documents\GitHub\Butterchase>py Butterchase\EnemyClasses\ClassSheets\Util.py
+
+Goatman random name 01:  Pebbles
+Goatman random name 02:  Squiggles
+Goatman random name 03:  Trixie
+
+
+Goblin random name 01:  Darren
+Goblin random name 02:  Reggie
+Goblin random name 03:  Lee
+
+
+Ogre random name 01:  Gunk
+Ogre random name 02:  Slurg
+Ogre random name 03:  Poob
+
+
+Orc random name 01:  Bin The double dipper
+Orc random name 02:  Plug Of holed socks
+Orc random name 03:  Doorknob Of holed socks
+
+
+Skeleton random name 01:  Meristophiles Beaumont
+Skeleton random name 02:  Reginald Strudabaker
+Skeleton random name 03:  Hugo Montgomery
+
+
+Troll random name 01:  Ivar Fletpek
+Troll random name 02:  Siggi Bjonderplerg
+Troll random name 03:  Ivar Angledik
+
+
+c:\Users\Administrator\Documents\GitHub\Butterchase>
+```
+
+
+
+## Acknowledgements
+- Robert Charles Levett-Millett for lending his creative writting to character names and level descriptions
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

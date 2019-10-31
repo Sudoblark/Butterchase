@@ -3,11 +3,11 @@ from random import randint
 # Name schema: Typical bloke names
 FirstNames = [
     "Terry","Darren","Mick","Tracey","Lee","Garry","Barry","Dom","Reggie","Steve",
-    "Big John","Clive"
+    "Big John","Clive","Gregg","Larry", "Noel"
     ]
 
 LastNames = [
-
+    "Punching","Tornado","Hilary","Dramatic", "Smith", "Clark",
 
 ]
 
