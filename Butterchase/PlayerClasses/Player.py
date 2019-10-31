@@ -4,6 +4,7 @@ from random import randint
 from BaseClasses.CharacterStates import CharacterStates
 from BaseClasses.Character import Character
 from BaseClasses.Enemy import Enemy
+from LevelClasses.Level_One import Level_One
 
 
 
@@ -20,6 +21,7 @@ class Player(Character):
         self.state = CharacterStates.Normal
         self.ineffectiveAttacks = False
         self.isTired = False
+        self.level = Level_One(self)
     # Quit option
     def quit(self):
         print("%s has died of dysentery.\n" % self.name)
@@ -31,6 +33,7 @@ class Player(Character):
     def status(self):
         print("%s's health: %d/%d" % (self.name, self.health, self.health_max))
         print("Is %s tired: %s" % (self.name, self.isTired))
+        self.level.Status()
     # tired option
     def tired(self):
         if self.isTired != True:
@@ -52,20 +55,7 @@ class Player(Character):
                 print("%s feels a little healthier now." % (self.name))
     # Explore option
     def explore(self):
-        if self.state != CharacterStates.Normal:
-            print("%s is too busy right now!" % (self.name))
-            # Enemy attacks when char tried to explore during a fight
-            self.enemy_attacks()
-        else:
-            # logic to explore stuff
-            if randint(0,1):
-                self.enemy = Enemy(self, "Steve the test goblin",2,10,1,5,False)
-                self.state = CharacterStates.Fight
-                print("%s encounters %s!" % (self.name, self.enemy.name))
-            else:
-                if randint(0,1):
-                    self.tired()
-                print("%s wanders" % self.name)
+        self.level.Explore()
     # Run away!
     def flee(self):
         if self.state != CharacterStates.Fight:
@@ -106,6 +96,12 @@ class Player(Character):
     def enemy_attacks(self):
         if self.enemy.do_damage(self, False):
             print("%s was slaughtered by %s!!" % (self.name, self.enemy.name))
+    # Go forward in level option
+    def level_forward(self):
+        self.level.GoForward()
+        # Go back in level option
+    def level_back(self):
+        self.level.GoBack()
 
 
 
@@ -119,4 +115,6 @@ Commands = {
     'explore' : Player.explore,
     'flee' : Player.flee,
     'attack' : Player.attack,
+    'goForward' : Player.level_forward,
+    'goBack': Player.level_back,
 }

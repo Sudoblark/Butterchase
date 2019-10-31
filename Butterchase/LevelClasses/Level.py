@@ -32,7 +32,9 @@ class Level:
     # Explore method for level, to be used by player when interacting with level
     def Explore(self):
         pass
-    
+    # Status method for level, to be used by player when interacting with the level
+    def Status(self):
+        pass
 
 
 

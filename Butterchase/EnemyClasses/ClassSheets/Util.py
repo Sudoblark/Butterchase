@@ -1,7 +1,5 @@
 #
 # Util module to return name and stats based on provided class
-#
-
 from enum import Enum
 import importlib
 class PossibleClasses(Enum):
@@ -17,7 +15,7 @@ def ReturnName(EnemyClass):
     if not isinstance(EnemyClass, PossibleClasses):
         raise TypeError("EnemyClass must be an instance of PossibleClasses Enum")
     # import file
-    ClassModule = importlib.import_module("%s" % EnemyClass.value)
+    ClassModule = importlib.import_module("%s" % EnemyClass.value, "Butterchase.EnemyClasses.ClassSheets")
     return ClassModule.ReturnName()
 
 # Method to return stats for char
