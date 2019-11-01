@@ -46,13 +46,13 @@ class Level:
        # Set current row
        CurrentRow = 0
        # Randomly determine max rows
-       LevelMaxRows = randint(minRows, maxRows)
+       LevelMaxRows = self.EnsureEven(randint(minRows, maxRows))
        # Set largest column
        self.largestColumns = 0
        # Create random number of rows
        while CurrentRow <= LevelMaxRows:
             NewRow = []
-            NewRowColumns = randint(minColumns, maxColumns)
+            NewRowColumns = self.EnsureEven(randint(minColumns, maxColumns))
             CurrentColumn = 0
             # Create random number of columns inside row
             while CurrentColumn <= NewRowColumns:
@@ -78,7 +78,14 @@ class Level:
             # Increment current row
             CurrentRow += 1
 
-
+    # Method to ensure that values are even
+    # Required so that level rows and columns are even
+    # Which in turn is required so that the map draws properly
+    def EnsureEven(self, value):
+        ReturnVal = value
+        while (ReturnVal % 2) != 0:
+            ReturnVal += 1
+        return ReturnVal
 
     # Method to show player a map of where they are
     def showMap(self):
