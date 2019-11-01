@@ -87,7 +87,6 @@ class Level_One(Level):
             print("%s senses enemies nearby" % self.player.name)
         else:
             print("%s looks around the damp cave lobby and doesn't notice much out of the ordinary" % self.player.name)
-
     def SetPlayerTired(self):
         # one in twenty chance of player becoming tired
         if randint(0,20) == 15:

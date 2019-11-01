@@ -102,6 +102,8 @@ class Player(Character):
         # Go back in level option
     def level_back(self):
         self.level.GoBack()
+    def level_map(self):
+        self.level.showMap()
 
 
 
@@ -117,4 +119,5 @@ Commands = {
     'attack' : Player.attack,
     'goForward' : Player.level_forward,
     'goBack': Player.level_back,
+    'showMap' : Player.level_map,
 }

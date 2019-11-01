@@ -93,7 +93,8 @@ Troll random name 03:  Ivar Angledik
 c:\Users\Administrator\Documents\GitHub\Butterchase>
 ```
 
-
+## Dev Notes
+- Ensure all levels endsteps are equal numbers
 
 ## Acknowledgements
 - Robert Charles Levett-Millett for lending his creative writting to character names and level descriptions
