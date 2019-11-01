@@ -103,8 +103,9 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 [0,0,2,0,]
 [0,0,0,0,0,0,0,0,0,1]
 
-1 = exit
+-1 = impassable
 0 = blank
+1 = exit
 2 = Goatman
 3 = Goblin
 4 = Orc

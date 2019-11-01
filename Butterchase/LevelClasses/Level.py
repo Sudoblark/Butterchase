@@ -109,13 +109,16 @@ class Level:
                 # Then check to see if this is an exit
                 elif self.levelMap[RowCounter][ColumnCounter] == 1:
                     Base += "I"
+                # Then check to see if this is impassable
+                elif self.levelMap[RowCounter][ColumnCounter] == -1:
+                    Base += "#"
                 # Else just print 0
                 else:
                     Base += "0"
                 # At the end increment column
                 ColumnCounter += 1
             # After iterating row add a new line and increment counter
-            Base += Padding + "-"
+            Base += Padding + "-" 
             Base += "\n"
             RowCounter += 1
         # Walls around the map
@@ -140,19 +143,23 @@ class Level:
         Header += "\n"
         Header += HeaderGap
         Header += " Legend:" + (" " * (43 - (len(HeaderGap) + 8))) + "|"
-        Header += "\n"
-        Header += HeaderGap
-        PlayerLeg = " X = %s" % self.player.name
-        PlayerLeg += " I = exit"
-        Header += PlayerLeg + (" " * (43 - (len(HeaderGap) + len(PlayerLeg)))) + "|"
-        Header += "\n"
-        Header += HeaderGap
-        Header += " " * (43 - (len(HeaderGap))) + "|"
-        
+        Header += self.ReturnNewLegend((" X = %s I = exit" % self.player.name),HeaderGap)
+        Header += self.ReturnNewLegend(" # = impassable ^ = known trap",HeaderGap)
+        Header += self.ReturnNewLegend(" £ = known chest",HeaderGap)
+        Header += self.ReturnNewLegend(" g = Goblin G = Goatman" ,HeaderGap)
+        Header += self.ReturnNewLegend(" o = Orc s = Skeleton" ,HeaderGap)
+        Header += self.ReturnNewLegend(" O = Ogre T = Troll" ,HeaderGap)
         print(Header)
         print("".join(Walls))
         print(Base)
         print("".join(Walls))
+
+    def ReturnNewLegend(self, msg, headerGap):
+        Content = "\n"
+        Content += headerGap
+        Content += msg + (" " * (43 - (len(headerGap) + len(msg)))) + "|"
+        return Content
+
 
 
 
