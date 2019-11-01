@@ -96,6 +96,43 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 ## Dev Notes
 - Ensure all levels endsteps are equal numbers
 
+### ToDo
+- [ ] Create a step array containing the level layout, e.g.:
+
+[1,0,0,2,0,0,0,0,0]
+[0,0,2,0,]
+[0,0,0,0,0,0,0,0,0,1]
+
+1 = exit
+0 = blank
+2 = Goatman
+3 = Goblin
+4 = Orc
+5 = Skeleton
+6 = Ogre
+7 = Troll
+8 = Trap
+9 = Treasure
+
+- [ ] Add random map generation with options above
+- [ ] Add goUp and goDown options on levels to allow 2D navigation
+- [ ] Also add goUp and goDown as recognise commands
+- [ ] Add checker to base level that determines if player is on a tile with an enemy
+- [ ] If on tile with enemy then randomly generate one with the appropriate type
+- [ ] Add checker to base level that determines if player is on tile with trap
+- [ ] Each level to contain trap method that has a list of traps and dice rolls to determine if player is "hit" by said trap
+- [ ] New trap base class with different types deviating from this to allow maximum future-proofing
+- [ ] Add inventory system to allow player to have:
+    Armour
+    Weapons
+    Potions
+- [ ] Each level to have list of possible treasure and dice rolls to determine what player recieved. If on a treasure tile the player always gets an item from a randomly generated list appropriate for the level 
+- [ ] 1 in 100 chance for treasure to be cursed and spawn a new enemy type of demon
+- [ ] Add in some way to have different NAT1 possibilities depending on the level
+- [ ] Add more dice rolls to allow bad and good things to happen more option
+
+
+
 ## Acknowledgements
 - Robert Charles Levett-Millett for lending his creative writting to character names and level descriptions
 
