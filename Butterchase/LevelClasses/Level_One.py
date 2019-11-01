@@ -9,10 +9,10 @@ class Level_One(Level):
         self.player = player
         self.lastLevel = None
         self.nextLevel = None
-        self.playerSteps = 0
-        self.endSteps = 12
-        # Populate the enemy list
-        self.populateEnemyList()
+        # Generate the level base
+        self.GenerateLevel(1,5,1,10)
+        self.playerRow = 0
+        self.playerColumn = 1
 
     def populateEnemyList(self):
         # Init enemy list
@@ -80,18 +80,12 @@ class Level_One(Level):
             # Return true so when we try to move to do not
             return True
     def Status(self):
-        # Output steps
-        print("01 level steps: %d/%d" % (self.playerSteps, self.endSteps))
-        # Output if there are still enemies
-        if len(self.enemyList) > 0:
-            print("%s senses enemies nearby" % self.player.name)
-        else:
-            print("%s looks around the damp cave lobby and doesn't notice much out of the ordinary" % self.player.name)
+        # for now do nothing for specific level
+        pass
     def SetPlayerTired(self):
         # one in twenty chance of player becoming tired
         if randint(0,20) == 15:
             self.player.tired()
-
 
 
 

@@ -1,4 +1,5 @@
 from PlayerClasses import Player
+from random import randint
 
 # Level base
 class Level:
@@ -10,8 +11,8 @@ class Level:
         self.nextLevel = NextLevel
         self.alreadyEntered = False
         self.alreadyGeneratedEnemies = False
-        self.playerSteps = 0
-        self.endSteps = 0
+        self.playerRow = 0
+        self.playerColumn = 0
 
     # Method to generate list of enemies for the level
     def populateEnemyList(self):
@@ -39,24 +40,84 @@ class Level:
     # Method to determine if player should become tired
     def SetPlayerTired(self):
         pass
+    def GenerateLevel(self, minRows, maxRows, minColumns, maxColumns):
+        # Array to hold all rows and columns
+       self.levelMap = []
+       # Set current row
+       CurrentRow = 0
+       # Randomly determine max rows
+       LevelMaxRows = randint(minRows, maxRows)
+       # Set largest column
+       self.largestColumns = 0
+       # Create random number of rows
+       while CurrentRow <= LevelMaxRows:
+            NewRow = []
+            NewRowColumns = randint(minColumns, maxColumns)
+            CurrentColumn = 0
+            # Create random number of columns inside row
+            while CurrentColumn <= NewRowColumns:
+                # Ensure we populate first row and column with 1
+                # Also ensure we populate last row and column with 1
+                if (CurrentRow == 0) & (CurrentColumn == 0):
+                    NewRow.append(1)
+                elif (CurrentRow == LevelMaxRows) & (CurrentColumn == NewRowColumns):
+                    NewRow.append(1)
+                else:
+                    NewRow.append(0)
+                CurrentColumn += 1
+            # Append new row to overall level
+            self.levelMap.append(NewRow)
+            # Compare this row with last to see if it has more columns
+            # Provide it is not the first
+            if CurrentRow != 0:
+                if NewRowColumns > len(self.levelMap[CurrentRow -1]):
+                    self.largestColumns = NewRowColumns
+                else:
+                    # Otherwise set previous row to largest
+                    self.largestColumns = len(self.levelMap[CurrentRow -1])
+            # Increment current row
+            CurrentRow += 1
+
+
+
     # Method to show player a map of where they are
     def showMap(self):
+        print(self.levelMap)
         # First make the base
-        Base = list("0" * self.endSteps)
-        # I is exit
-        Base[0] = "I"
-        Base[len(Base) -1] = "I"
-        # X is player
-        Base[self.playerSteps] = "X"
-        SpareBase = 42 - len(Base)
-        Base = "-" + (" " * (SpareBase // 2)) + "".join(Base) + (" " * (SpareBase // 2)) + "-"
+        Base = ""
+        #Iterate through level map
+        RowCounter = 0
+        for x in self.levelMap:
+            # Iterate through 'row'
+            ColumnCounter = 0
+            # Add padding
+            SpareBase = 42 - len(x)
+            Padding = " " * (SpareBase // 2)
+            Base += "-" + Padding
+            for y in x:
+                # If 1 then this is an exit
+                # First check if this is the player
+                if (RowCounter == self.playerRow) & (ColumnCounter == self.playerColumn):
+                    Base += "X"
+                # Then check to see if this is an exit
+                elif self.levelMap[RowCounter][ColumnCounter] == 1:
+                    Base += "I"
+                # Else just print 0
+                else:
+                    Base += "0"
+                # At the end increment column
+                ColumnCounter += 1
+            # After iterating row add a new line and increment counter
+            Base += Padding + "-"
+            Base += "\n"
+            RowCounter += 1
         # Walls around the map
         Walls = list("-" * 44)
         # Header
         ## Border
         HeaderBorder = list("-" * 44)
         ## Join to map
-        HeaderGap = "|" + (" " * (self.endSteps)) + "|"
+        HeaderGap = "|" + (" " * (self.largestColumns)) + "|"
 
         ## Header logic
         Header = ("".join(HeaderBorder)) + ""
