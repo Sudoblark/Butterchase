@@ -100,7 +100,7 @@ class Level:
             # Add padding
             SpareBase = 42 - len(x)
             Padding = " " * (SpareBase // 2)
-            Base += "-" + Padding
+            Base += "|" + Padding
             for y in x:
                 # If 1 then this is an exit
                 # First check if this is the player
@@ -118,7 +118,7 @@ class Level:
                 # At the end increment column
                 ColumnCounter += 1
             # After iterating row add a new line and increment counter
-            Base += Padding + "-" 
+            Base += Padding + " |" 
             Base += "\n"
             RowCounter += 1
         # Walls around the map
@@ -133,11 +133,11 @@ class Level:
         Header = ("".join(HeaderBorder)) + ""
         Header += "\n"
         # Flavour text
-        Header += "- " + "PipMap v0.1" + (" " * 29) + " -"
+        Header += "| " + "PipMap v0.1" + (" " * 29) + " |"
         Header += "\n"
-        Header += "- " + "Your handy navigator" + (" " * 20) + " -"
+        Header += "| " + "Your handy navigator" + (" " * 20) + " |"
         Header += "\n"
-        Header += "- " + "in a directless world!" + (" " * 18) + " -"
+        Header += "| " + "in a directless world!" + (" " * 18) + " |"
         Header += "\n"
         Header += ("".join(HeaderBorder))
         Header += "\n"
