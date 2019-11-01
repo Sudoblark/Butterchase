@@ -132,6 +132,7 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 - [ ] 1 in 100 chance for treasure to be cursed and spawn a new enemy type of demon
 - [ ] Add in some way to have different NAT1 possibilities depending on the level
 - [ ] Add more dice rolls to allow bad and good things to happen more option
+- [ ] Limit len of name so menu doesn't break
 
 
 
