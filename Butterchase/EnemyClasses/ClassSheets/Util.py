@@ -2,6 +2,9 @@
 # Util module to return name and stats based on provided class
 from enum import Enum
 import importlib
+
+
+
 class PossibleClasses(Enum):
     Goatman = "GoatmanSheet"
     Goblin = "GoblinSheet"
@@ -14,9 +17,19 @@ class PossibleClasses(Enum):
 def ReturnName(EnemyClass):
     if not isinstance(EnemyClass, PossibleClasses):
         raise TypeError("EnemyClass must be an instance of PossibleClasses Enum")
-    # import file
-    ClassModule = importlib.import_module("%s" % EnemyClass.value, "Butterchase.EnemyClasses.ClassSheets")
-    return ClassModule.ReturnName()
+    # execute appropriate returnName
+    if EnemyClass == PossibleClasses.Goatman:
+        return GoatmanSheet.ReturnName()
+    elif EnemyClass == PossibleClasses.Goblin:
+        return GoblinSheet.ReturnName()
+    elif EnemyClass == PossibleClasses.Ogre:
+        return OgreSheet.ReturnName()
+    elif EnemyClass == PossibleClasses.Orc:
+        return OrcSheet.ReturnName()
+    elif EnemyClass == PossibleClasses.Skeleton:
+        return SkeletonSheet.ReturnName()
+    elif EnemyClass == PossibleClasses.Troll:
+        return TrollSheet.ReturnName()
 
 # Method to return stats for char
 def ReturnStats(EnemyClass):
@@ -24,6 +37,7 @@ def ReturnStats(EnemyClass):
         raise TypeError("EnemyClass must be an instance of PossibleClasses Enum")
 
 if __name__ == "__main__":
+    import GoatmanSheet, GoblinSheet, OgreSheet, OrcSheet, SkeletonSheet, TrollSheet
     # Goatman Test
     print("")
     print ("Goatman random name 01: ", ReturnName(PossibleClasses.Goatman))
@@ -60,3 +74,5 @@ if __name__ == "__main__":
     print ("Troll random name 02: ", ReturnName(PossibleClasses.Troll))
     print ("Troll random name 03: ", ReturnName(PossibleClasses.Troll))
     print("")
+else:
+    from EnemyClasses.ClassSheets import GoatmanSheet, GoblinSheet, OgreSheet, OrcSheet, SkeletonSheet, TrollSheet

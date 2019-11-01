@@ -3,5 +3,6 @@ from EnemyClasses.ClassSheets import Util
 
 class Ogre(Enemy):
     def __init__(self, player):
-        Enemy.__init__(player, (Util.ReturnName(Util.PossibleClasses.Ogre)), 32, 45, 21, 25, False)
+        Name = Util.ReturnName(Util.PossibleClasses.Ogre)
+        Enemy.__init__(self, player, Name, 32, 45, 21, 25, False)
     

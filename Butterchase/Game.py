@@ -3,6 +3,9 @@ p = Player()
 p.name = input("What is your character's name? ")
 print("type help to get a list of actions\n")
 print("%s foolishly enters a dark cave, seeking adventure..." % p.name)
+print("")
+p.level.EntranceMessage()
+print("")
 
 while(p.health > 0):
   line = input("> ")

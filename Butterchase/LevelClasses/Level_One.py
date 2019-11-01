@@ -29,7 +29,7 @@ class Level_One(Level):
     def EntranceMessage(self):
         Message = "%s enters the cave's lobby. It's damp, dark and smelly. " % self.player.name
         Message = Message + "All around are unfamiliar faces, worn out places, worn out faces. "
-        Message = Message + "%s finds it kind of funny, they find it kind of sad. "
+        Message = Message + "%s finds it kind of funny, they find it kind of sad. " % self.player.name
         print(Message)
 
     def AllEnemiesDead(self):
