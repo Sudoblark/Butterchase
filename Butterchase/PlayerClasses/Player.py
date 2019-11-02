@@ -12,7 +12,6 @@ from LevelClasses.Level_One import Level_One
 class Player(Character):
     # Constructor
     def __init__(self):
-        self.state = "normal"
         self.health = 10
         self.health_max = 10
         self.minAttack = 0
@@ -97,11 +96,14 @@ class Player(Character):
         if self.enemy.do_damage(self, False):
             print("%s was slaughtered by %s!!" % (self.name, self.enemy.name))
     # Go forward in level option
-    def level_forward(self):
-        self.level.GoForward()
-        # Go back in level option
-    def level_back(self):
-        self.level.GoBack()
+    def levelLeft(self):
+        self.level.GoLeft()
+    def levelRight(self):
+        self.level.GoRight()
+    def levelUp(self):
+        self.level.GoUp()
+    def levelDown(self):
+        self.level.GoDown()
     def level_map(self):
         self.level.showMap()
 
@@ -117,7 +119,9 @@ Commands = {
     'explore' : Player.explore,
     'flee' : Player.flee,
     'attack' : Player.attack,
-    'goForward' : Player.level_forward,
-    'goBack': Player.level_back,
+    'goRight' : Player.levelRight,
+    'goLeft': Player.levelLeft,
+    'goUp': Player.levelUp,
+    'goDown' :  Player.levelDown,
     'showMap' : Player.level_map,
 }

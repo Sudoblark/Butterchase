@@ -34,27 +34,6 @@ class Level_One(Level):
 
     def AllEnemiesDead(self):
         pass
-    def GoForward(self):
-        # Check if we are not currently in combat
-        if self.Explore() == False:
-            # Increment steps
-            self.playerSteps = self.playerSteps + 1
-            # See if player should be tired
-            self.SetPlayerTired()
-            # If player has completed the level
-            if self.playerSteps >= self.endSteps:
-                print("%s beltches in excitment. The game is over.")
-                self.player.health = 0
-    def GoBack(self):
-        # Check if we are not currently in combat
-        if self.Explore() == False:
-            # Go back one pace
-            self.playerSteps = self.playerSteps -1
-            # See if player should be tired
-            self.SetPlayerTired()
-            # If player has reached start of level
-            if self.playerSteps >= 0:
-                print("%s is back at the entrance of the cave.")
     def Explore(self):
         # If no more enemies are left
         if len(self.enemyList) == 0:

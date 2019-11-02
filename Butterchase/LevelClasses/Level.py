@@ -1,5 +1,6 @@
 from PlayerClasses import Player
 from random import randint
+from BaseClasses.CharacterStates import CharacterStates
 
 # Level base
 class Level:
@@ -25,12 +26,65 @@ class Level:
     # Method that tells user information about where they can go next
     def AllEnemiesDead(self):
         pass
-    # GoForward method
-    def GoForward(self):
-        pass
-    # Go back method
-    def GoBack(self):
-        pass
+    # forward method
+    def GoRight(self):
+        # If player is in combat then enemy gets free hit
+        if self.player.state == CharacterStates.Fight:
+            print("%s blocks %s's way" % (self.player.name, self.player.enemy.name))
+            self.player.enemy_attacks()
+        else:
+            # Get tile to right of player
+            NewColumnVal = self.levelMap[self.playerRow][self.playerColumn + 1]
+            self.CheckTile(NewColumnVal, "Right")
+
+    # back method
+    def GoLeft(self):
+        # If player is in combat then enemy gets free hit
+        if self.player.state == CharacterStates.Fight:
+            print("%s blocks %s's way" % (self.player.name, self.player.enemy.name))
+            self.player.enemy_attacks()
+        else:
+            # Get tile to left of player
+            NewColumnVal = self.levelMap[self.playerRow][self.playerColumn - 1]
+            self.CheckTile(NewColumnVal, "Left")
+    # up method
+    def GoUp(self):
+        # If player is in combat then enemy gets free hit
+        if self.player.state == CharacterStates.Fight:
+            print("%s blocks %s's way" % (self.player.name, self.player.enemy.name))
+            self.player.enemy_attacks()
+        else:
+            # Get tile above player
+            NewColumnVal = self.levelMap[self.playerRow -1][self.playerColumn]
+            self.CheckTile(NewColumnVal, "Up")
+    # down method
+    def GoDown (self):
+        # If player is in combat then enemy gets free hit
+        if self.player.state == CharacterStates.Fight:
+            print("%s blocks %s's way" % (self.player.name, self.player.enemy.name))
+            self.player.enemy_attacks()
+        else:
+            # Get tile below player
+            NewColumnVal = self.levelMap[self.playerRow + 1][self.playerColumn]
+            self.CheckTile(NewColumnVal, "Down")
+
+    # Method to check what happens when player attempts to move
+    def CheckTile(self, newTile, Movement):
+        # -1 is impassable terrain
+        if newTile == -1:
+            print("The cave walls block %s's movement" % self.player.name)
+        # 0 is normal terrain
+        elif newTile == 0:
+            # Depending on player movement increment column or rows
+            if Movement == "Right":
+                self.playerColumn += 1
+            elif Movement == "Left":
+                self.playerColumn -= 1
+            elif Movement == "Up":
+                self.playerRow -= 1
+            elif Movement == "Down":
+                self.playerRow += 1
+
     # Explore method for level, to be used by player when interacting with level
     def Explore(self):
         pass
