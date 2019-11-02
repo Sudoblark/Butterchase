@@ -65,16 +65,10 @@ class Level:
                 else:
                     NewRow.append(0)
                 CurrentColumn += 1
+            # Pad row with impassable tiles
+            self.PadRow(NewRow, maxColumns)
             # Append new row to overall level
             self.levelMap.append(NewRow)
-            # Compare this row with last to see if it has more columns
-            # Provide it is not the first
-            if CurrentRow != 0:
-                if NewRowColumns > len(self.levelMap[CurrentRow -1]):
-                    self.largestColumns = NewRowColumns
-                else:
-                    # Otherwise set previous row to largest
-                    self.largestColumns = len(self.levelMap[CurrentRow -1])
             # Increment current row
             CurrentRow += 1
 
@@ -86,6 +80,17 @@ class Level:
         while (ReturnVal % 2) != 0:
             ReturnVal += 1
         return ReturnVal
+
+    # Method to pad arrays with impassable terrain to ensure even size
+    def PadRow(self, Row, RequiredSize):
+        Pos = "Left"
+        while len(Row) != RequiredSize:
+            if Pos == "Left":
+                Row.insert(0,-1)
+                Pos = "Right"
+            else:
+                Row.append(-1)
+                Pos = "Left"
 
     # Method to show player a map of where they are
     def showMap(self):

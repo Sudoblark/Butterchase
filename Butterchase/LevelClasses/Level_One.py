@@ -12,7 +12,7 @@ class Level_One(Level):
         # Generate the level base
         self.GenerateLevel(1,5,1,10)
         self.playerRow = 0
-        self.playerColumn = 1
+        self.playerColumn = (self.levelMap[0].index(1)) + 1
 
     def populateEnemyList(self):
         # Init enemy list
