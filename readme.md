@@ -114,6 +114,7 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 7 = Troll
 8 = Trap
 9 = Treasure
+10 = Visible trap
 
 - [ ] Add random map generation with options above
 - [x] Add goUp and goDown options on levels to allow 2D navigation

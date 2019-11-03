@@ -23,7 +23,7 @@ class Level:
             EnemyRow = randint(0, (len(self.levelMap)) -1)
             EnemyColumn = randint(0, (len(self.levelMap[0]) -1))
             # Make tile is empty and player is not there
-            if (self.levelMap[EnemyRow][EnemyColumn] == 0) & self.playerRow != EnemyRow & self.playerColumn != EnemyColumn:
+            if (self.levelMap[EnemyRow][EnemyColumn] == 0) & (self.playerRow != EnemyRow) & (self.playerColumn != EnemyColumn):
                 self.levelMap[EnemyRow][EnemyColumn] = Enemy
                 Counter += 1
 
@@ -191,6 +191,30 @@ class Level:
                 # Then check to see if this is impassable
                 elif self.levelMap[RowCounter][ColumnCounter] == -1:
                     Base += "#"
+                # Goatman
+                elif self.levelMap[RowCounter][ColumnCounter] == 2:
+                    Base += "G"
+                # Goblin
+                elif self.levelMap[RowCounter][ColumnCounter] == 3:
+                    Base += "g"
+                # Orc
+                elif self.levelMap[RowCounter][ColumnCounter] == 4:
+                    Base += "o"
+                # Skeleton
+                elif self.levelMap[RowCounter][ColumnCounter] == 5:
+                    Base += "s"
+                # Ogre
+                elif self.levelMap[RowCounter][ColumnCounter] == 6:
+                    Base += "O"
+                # Troll
+                elif self.levelMap[RowCounter][ColumnCounter] == 7:
+                    Base += "T"
+                # Treasure
+                elif self.levelMap[RowCounter][ColumnCounter] == 9:
+                    Base += "£"
+                # Visible trap
+                elif self.levelMap[RowCounter][ColumnCounter] == 10:
+                    Base += "^"
                 # Else just print 0
                 else:
                     Base += "0"
