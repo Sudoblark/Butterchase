@@ -13,18 +13,7 @@ class Level_One(Level):
         self.GenerateLevel(1,5,1,10)
         self.playerRow = 0
         self.playerColumn = (self.levelMap[0].index(1)) + 1
-
-    def populateEnemyList(self):
-        # Init enemy list
-        self.enemyList = []
-        # Populate with Goblins
-        GoblinCount = randint(1,10)
-        for x in range(GoblinCount):
-            self.enemyList.append(Goblin(self.player))
-        # Populate with Goatmen
-        GoatmenCount = randint(1,3)
-        for x in range(GoatmenCount):
-            self.enemyList.append(Goatman(self.player))
+        self.populateEnemyList(2,2)
 
     def EntranceMessage(self):
         Message = "%s enters the cave's lobby. It's damp, dark and smelly. " % self.player.name

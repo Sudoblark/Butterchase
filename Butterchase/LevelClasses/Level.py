@@ -16,9 +16,18 @@ class Level:
         self.playerColumn = 0
 
     # Method to generate list of enemies for the level
-    def populateEnemyList(self):
-        if self.alreadyGeneratedEnemies == False:
-            pass
+    def populateEnemyList(self, number, Enemy):
+        Counter = 0
+        while Counter < number:
+            # Get a random row and column
+            EnemyRow = randint(0, (len(self.levelMap)) -1)
+            EnemyColumn = randint(0, (len(self.levelMap[0]) -1))
+            # Make tile is empty and player is not there
+            if (self.levelMap[EnemyRow][EnemyColumn] == 0) & self.playerRow != EnemyRow & self.playerColumn != EnemyColumn:
+                self.levelMap[EnemyRow][EnemyColumn] = Enemy
+                Counter += 1
+
+
     # Method that announces to the user that they're in the room
     def EntranceMessage(self):
         if self.alreadyEntered == False:

@@ -116,8 +116,8 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 9 = Treasure
 
 - [ ] Add random map generation with options above
-- [ ] Add goUp and goDown options on levels to allow 2D navigation
-- [ ] Also add goUp and goDown as recognise commands
+- [x] Add goUp and goDown options on levels to allow 2D navigation
+- [x] Also add goUp and goDown as recognise commands
 - [ ] Add checker to base level that determines if player is on a tile with an enemy
 - [ ] If on tile with enemy then randomly generate one with the appropriate type
 - [ ] Add checker to base level that determines if player is on tile with trap
@@ -133,8 +133,7 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 - [ ] Add in some way to have different NAT1 possibilities depending on the level
 - [ ] Add more dice rolls to allow bad and good things to happen more option
 - [ ] Limit len of name so menu doesn't break
-
-
+- [ ] Add logic for if player moves to exit
 
 ## Acknowledgements
 - Robert Charles Levett-Millett for lending his creative writting to character names and level descriptions
