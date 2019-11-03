@@ -2,6 +2,11 @@ from PlayerClasses import Player
 from random import randint
 from BaseClasses.CharacterStates import CharacterStates
 from EnemyClasses.Basic.Goatman import Goatman
+from EnemyClasses.Basic.Goblin import Goblin
+from EnemyClasses.Advanced.Orc import Orc
+from EnemyClasses.Advanced.Skeleton import Skeleton
+from EnemyClasses.Serious.Troll import Troll
+from EnemyClasses.Serious.Ogre import Ogre
 
 # Level base
 class Level:
@@ -15,6 +20,7 @@ class Level:
         self.alreadyGeneratedEnemies = False
         self.playerRow = 0
         self.playerColumn = 0
+        self.levelExploreMsg = "Not implemented"
 
     # Method to generate list of enemies for the level
     def populateEnemyList(self, number, Enemy):
@@ -113,19 +119,56 @@ class Level:
             self.player.enemy = Goatman(self.player, newRow, newColumn)
             self.player.state = CharacterStates.Fight
             print("%s encounters %s!" % (self.player.name, self.player.enemy.name))
+        # 3 is goblin
+        elif newTile == 3:
+            self.player.enemy = Goblin(self.player, newRow, newColumn)
+            self.player.state = CharacterStates.Fight
+            print("%s encounters %s!" % (self.player.name, self.player.enemy.name))
+        # 4 is orc
+        elif newTile == 4:
+            self.player.enemy = Orc(self.player, newRow, newColumn)
+            self.player.state = CharacterStates.Fight
+            print("%s encounters %s!" % (self.player.name, self.player.enemy.name))
+        # 5 is skeleton
+        elif newTile == 5:
+            self.player.enemy = Skeleton(self.player, newRow, newColumn)
+            self.player.state = CharacterStates.Fight
+            print("%s encounters %s!" % (self.player.name, self.player.enemy.name))
+        # 6 is ogre
+        elif newTile == 6:
+            self.player.enemy = Ogre(self.player, newRow, newColumn)
+            self.player.state = CharacterStates.Fight
+            print("%s encounters %s!" % (self.player.name, self.player.enemy.name))
+        # 7 is troll
+        elif newTile == 7:
+            self.player.enemy = Troll(self.player, newRow, newColumn)
+            self.player.state = CharacterStates.Fight
+            print("%s encounters %s!" % (self.player.name, self.player.enemy.name))
 
     def RemoveItem(self, row, column):
         self.levelMap[row][column] = 0
 
     # Explore method for level, to be used by player when interacting with level
     def Explore(self):
-        pass
+        # If player is current in a fight then enemy gets free attack
+        if self.player.state != CharacterStates.Normal:
+            print("%s is too busy right now!" % (self.player.name))
+            self.player.enemy_attacks()
+            # return true so we cannot move
+            return True
+        else: # We return explore logic from level
+            print(self.levelExploreMsg)
+            # Return false so we can move
+            return False
     # Status method for level, to be used by player when interacting with the level
     def Status(self):
         pass
     # Method to determine if player should become tired
     def SetPlayerTired(self):
-        pass
+        # one in twenty chance of player becoming tired
+        if randint(0,20) == 15:
+            self.player.tired()
+    
     def GenerateLevel(self, minRows, maxRows, minColumns, maxColumns):
         # Array to hold all rows and columns
        self.levelMap = []
@@ -227,9 +270,9 @@ class Level:
                 # Visible trap
                 elif self.levelMap[RowCounter][ColumnCounter] == 10:
                     Base += "^"
-                # Else just print 0
+                # Else just print -
                 else:
-                    Base += "0"
+                    Base += "-"
                 # At the end increment column
                 ColumnCounter += 1
             # After iterating row add a new line and increment counter

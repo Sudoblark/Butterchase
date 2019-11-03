@@ -12,6 +12,7 @@ from LevelClasses.Level_One import Level_One
 class Player(Character):
     # Constructor
     def __init__(self):
+        self.name = "Placeholder"
         self.health = 10
         self.health_max = 10
         self.minAttack = 0

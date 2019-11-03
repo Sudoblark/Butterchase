@@ -1,60 +1,31 @@
 from LevelClasses.Level import Level
-from EnemyClasses.Basic.Goatman import Goatman
-from EnemyClasses.Basic.Goblin import Goblin
 from random import randint
 from BaseClasses.CharacterStates import CharacterStates
-# Level 1
+# Test level to test all mechanics
 class Level_One(Level):
     def __init__(self, player):
         self.player = player
         self.lastLevel = None
         self.nextLevel = None
         # Generate the level base
-        self.GenerateLevel(1,5,1,10)
+        self.GenerateLevel(2,4,2,2)
         self.playerRow = 0
         self.playerColumn = (self.levelMap[0].index(1)) + 1
         self.populateEnemyList(2,2)
+        self.levelExploreMsg = "%s peers ahead. In the distance there is an outcropping in the stone..." % self.player.name
 
     def EntranceMessage(self):
         Message = "%s enters the cave's lobby. It's damp, dark and smelly. " % self.player.name
         Message = Message + "All around are unfamiliar faces, worn out places, worn out faces. "
         Message = Message + "%s finds it kind of funny, they find it kind of sad. " % self.player.name
+        Message = Message + "The level with a corridor is the first you'll ever have. "
         print(Message)
 
     def AllEnemiesDead(self):
         pass
-    def Explore(self):
-        # If no more enemies are left
-        if len(self.enemyList) == 0:
-            print("%s looks around. All quiet here.")
-            # Return false so when we try to move we can
-            return False
-        # If there are enemies
-        else:
-            # If player is current in a fight then enemy gets free attack
-            if self.player.state != CharacterStates.Normal:
-                print("%s is too busy right now!" % (self.player.name))
-                self.player.enemy_attacks()
-            else: # We grab a random enemy from the list and present to player
-                # Get a random enemy
-                randomEnemy = self.enemyList[randint(0, len(self.enemyList) -1)]
-                # Remove from list
-                self.enemyList.remove(randomEnemy)
-                # Target player
-                self.player.enemy = randomEnemy
-                self.player.state = CharacterStates.Fight
-                print("%s encounters %s!" % (self.player.name, randomEnemy.name))
-                
-            # Return true so when we try to move to do not
-            return True
     def Status(self):
         # for now do nothing for specific level
         pass
-    def SetPlayerTired(self):
-        # one in twenty chance of player becoming tired
-        if randint(0,20) == 15:
-            self.player.tired()
-
 
 
 
