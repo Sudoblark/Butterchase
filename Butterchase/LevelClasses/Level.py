@@ -1,6 +1,7 @@
 from PlayerClasses import Player
 from random import randint
 from BaseClasses.CharacterStates import CharacterStates
+from EnemyClasses.Basic.Goatman import Goatman
 
 # Level base
 class Level:
@@ -104,6 +105,14 @@ class Level:
                 self.playerRow -= 1
             elif Movement == "Down":
                 self.playerRow += 1
+        # 1 is exit
+        elif newTile == 1:
+            print("Exit!")
+        # 2 is goatman
+        elif newTile == 2:
+            self.player.enemy = Goatman(self.player)
+            self.player.state = CharacterStates.Fight
+            print("%s encounters %s!" % (self.player.name, self.player.enemy.name))
 
     # Explore method for level, to be used by player when interacting with level
     def Explore(self):
