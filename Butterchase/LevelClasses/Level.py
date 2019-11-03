@@ -21,7 +21,6 @@ class Level:
         self.playerRow = 0
         self.playerColumn = 0
         self.levelExploreMsg = "Not implemented"
-
     # Method to generate list of enemies for the level
     def populateEnemyList(self, number, Enemy):
         Counter = 0

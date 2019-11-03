@@ -4,7 +4,6 @@ from random import randint
 from BaseClasses.CharacterStates import CharacterStates
 from BaseClasses.Character import Character
 from BaseClasses.Enemy import Enemy
-from LevelClasses.Level_One import Level_One
 
 
 
@@ -21,7 +20,7 @@ class Player(Character):
         self.state = CharacterStates.Normal
         self.ineffectiveAttacks = False
         self.isTired = False
-        self.level = Level_One(self)
+        self.level = None
     # Quit option
     def quit(self):
         print("%s has died of dysentery.\n" % self.name)

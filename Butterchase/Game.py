@@ -1,5 +1,6 @@
 from PlayerClasses.Player import Player, Commands
 from LevelClasses.Level_Test import Level_Test
+from LevelClasses.Level_One import Level_One
 p = Player()
 p.name = input("What is your character's name? ")
 print("type help to get a list of actions\n")
@@ -8,6 +9,8 @@ print("")
 # If we are testing then load the test level
 if p.name == "DevTest":
   p.level = Level_Test(p)
+else:
+  p.level = Level_One(p)
 p.level.EntranceMessage()
 print("")
 
