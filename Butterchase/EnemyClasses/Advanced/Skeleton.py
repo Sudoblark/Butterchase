@@ -3,6 +3,6 @@ from EnemyClasses.ClassSheets import Util
 
 class Skeleton(Enemy):
     def __init__(self, player):
-        Name = Util.ReturnName(Util.PossibleClasses.Skeleton)
-        Enemy.__init__(self, player, Name, 17, 30, 12, 16, False)
+        Name = Util.ReturnName(Util.PossibleClasses.Skeleton, row, column)
+        Enemy.__init__(self, player, Name, 17, 30, 12, 16, False, row, column)
     

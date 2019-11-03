@@ -83,7 +83,11 @@ class Player(Character):
         else:
             if self.do_damage(self.enemy, self.isTired):
                 print("%s executes %s!" % (self.name, self.enemy.name))
+                # Remove enemy from level
+                self.level.RemoveItem(self.enemy.row, self.enemy.column)
+                # Set player enemy to none
                 self.enemy = None
+                # Set fight state to normal
                 self.state = CharacterStates.Normal
                 if (randint(0, self.health) < 10):
                     self.health = self.health + 1

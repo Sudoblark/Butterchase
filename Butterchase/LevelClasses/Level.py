@@ -56,7 +56,7 @@ class Level:
         else:
             # Get tile to right of player
             NewColumnVal = self.GetNewTile(self.playerRow, self.playerColumn + 1)
-            self.CheckTile(NewColumnVal, "Right")
+            self.CheckTile(self.playerRow, (self.playerColumn + 1), NewColumnVal, "Right")
     # back method
     def GoLeft(self):
         # If player is in combat then enemy gets free hit
@@ -66,7 +66,7 @@ class Level:
         else:
             # Get tile to left of player
             NewColumnVal = self.GetNewTile(self.playerRow, self.playerColumn - 1)
-            self.CheckTile(NewColumnVal, "Left")
+            self.CheckTile(self.playerRow, (self.playerColumn - 1), NewColumnVal, "Left")
     # up method
     def GoUp(self):
         # If player is in combat then enemy gets free hit
@@ -76,7 +76,7 @@ class Level:
         else:
             # Get tile above player
             NewColumnVal = self.GetNewTile(self.playerRow - 1, self.playerColumn)
-            self.CheckTile(NewColumnVal, "Up")
+            self.CheckTile((self.playerRow -1), self.playerColumn, NewColumnVal, "Up")
     # down method
     def GoDown (self):
         # If player is in combat then enemy gets free hit
@@ -86,10 +86,10 @@ class Level:
         else:
             # Get tile below player
             NewColumnVal = self.GetNewTile(self.playerRow + 1, self.playerColumn)
-            self.CheckTile(NewColumnVal, "Down")
+            self.CheckTile((self.playerRow + 1), self.playerColumn, NewColumnVal, "Down")
 
     # Method to check what happens when player attempts to move
-    def CheckTile(self, newTile, Movement):
+    def CheckTile(self, newRow, newColumn, newTile, Movement):
         # -1 is impassable terrain
         # Also check to see player does not go outside bounds of level
         if newTile == -1:
@@ -110,9 +110,12 @@ class Level:
             print("Exit!")
         # 2 is goatman
         elif newTile == 2:
-            self.player.enemy = Goatman(self.player)
+            self.player.enemy = Goatman(self.player, newRow, newColumn)
             self.player.state = CharacterStates.Fight
             print("%s encounters %s!" % (self.player.name, self.player.enemy.name))
+
+    def RemoveItem(self, row, column):
+        self.levelMap[row][column] = 0
 
     # Explore method for level, to be used by player when interacting with level
     def Explore(self):
