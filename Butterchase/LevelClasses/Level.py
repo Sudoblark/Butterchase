@@ -29,7 +29,7 @@ class Level:
 
     def GetNewTile(self, Row, Column):
         # First make sure we are not going out the confines of the map
-        if (Column > len(self.levelMap[0])) or (Column < 0):
+        if (Column > (len(self.levelMap[0]) - 1)) or (Column < 0):
             ReturnVal = -1
         elif (Row > (len(self.levelMap) - 1)) or (Row < 0):
             ReturnVal = -1
