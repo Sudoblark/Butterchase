@@ -136,6 +136,10 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 - [ ] Limit len of name so menu doesn't break
 - [ ] Add logic for if player moves to exit
 
+### Inventory System
+- [ ] Add evade mechanic
+- [ ] Add base/adjusted attack to all characters
+
 ## Acknowledgements
 - Robert Charles Levett-Millett for lending his creative writting to character names and level descriptions
 

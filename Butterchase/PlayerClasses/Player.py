@@ -26,7 +26,10 @@ class Player(Character):
         # Values for inventory defence
         self.baseDefence = 0
         self.adjustedDefence = 0
-        
+        # Evade chance
+        self.adjustedEvadeChance = 6
+        self.evadeAttack = [0, self.adjustedEvadeChance]
+
     # Quit option
     def quit(self):
         print("%s has died of dysentery.\n" % self.name)
