@@ -97,6 +97,8 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 - Ensure all levels endsteps are equal numbers
 
 ### ToDo
+
+#### General
 - [ ] Create a step array containing the level layout, e.g.:
 
 [1,0,0,2,0,0,0,0,0]
@@ -119,26 +121,47 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 - [ ] Add random map generation with options above
 - [x] Add goUp and goDown options on levels to allow 2D navigation
 - [x] Also add goUp and goDown as recognise commands
-- [ ] Add checker to base level that determines if player is on a tile with an enemy
-- [ ] If on tile with enemy then randomly generate one with the appropriate type
+- [x] Add checker to base level that determines if player is on a tile with an enemy
+- [x] If on tile with enemy then randomly generate one with the appropriate type
+
+
+#### Error handling
+- [ ] Limit len of name so menu doesn't break
+
+#### Levels
+- [ ] Add logic for if player moves to exit
+- [ ] Add in some way to have different NAT1 possibilities depending on the level
+- [ ] Add more dice rolls to allow bad and good things to happen more option
+
+
+#### Traps
 - [ ] Add checker to base level that determines if player is on tile with trap
 - [ ] Each level to contain trap method that has a list of traps and dice rolls to determine if player is "hit" by said trap
 - [ ] New trap base class with different types deviating from this to allow maximum future-proofing
 - [ ] Traps to have "visible" property, if visible then play can see. E.G. a great big hole in the group is pretty obvious
-- [ ] Add inventory system to allow player to have:
-    Armour
-    Weapons
-    Potions
-- [ ] Each level to have list of possible treasure and dice rolls to determine what player recieved. If on a treasure tile the player always gets an item from a randomly generated list appropriate for the level 
-- [ ] 1 in 100 chance for treasure to be cursed and spawn a new enemy type of demon
-- [ ] Add in some way to have different NAT1 possibilities depending on the level
-- [ ] Add more dice rolls to allow bad and good things to happen more option
-- [ ] Limit len of name so menu doesn't break
-- [ ] Add logic for if player moves to exit
 
-### Inventory System
+
+#### Inventory System
 - [ ] Add evade mechanic
 - [ ] Add base/adjusted attack to all characters
+- [ ] Create weapons and armour for each enemy class
+- [ ] Have enemies equip random weapons and armour on spawn
+- [ ] Create player weapons and armour
+- [ ] Add weapons and armour to chests
+- [ ] Each level to have list of possible treasure and dice rolls to determine what player recieved. If on a treasure tile the player always gets an item from a randomly generated list appropriate for the level 
+- [ ] Use weapon and armour flavour text where appropriate
+- [ ] 1 in 100 chance for treasure to be cursed and spawn a new enemy type of demon
+
+#### Companion System
+- [ ] Add mechanics for followers
+- [ ] Add charm option to try and convince an enemy to become your follower
+- [ ] Other followers are spawned during random events
+
+#### Shop system
+- [ ] Add a cute dog that you can buy things from
+
+#### Random events
+- [ ] When exiting a level have random events that may happen, requiring player input, before moving on to next level
 
 ## Acknowledgements
 - Robert Charles Levett-Millett for lending his creative writting to character names and level descriptions
