@@ -14,13 +14,19 @@ class Player(Character):
         self.name = "Placeholder"
         self.health = 10
         self.health_max = 10
-        self.minAttack = 0
-        self.maxAttack = 10
         self.enemy = None
         self.state = CharacterStates.Normal
         self.ineffectiveAttacks = False
         self.isTired = False
         self.level = None
+
+        # Values for inventory attack
+        self.baseAttack = [0, 10]
+        self.adjustedAttack = [0, 10]
+        # Values for inventory defence
+        self.baseDefence = 0
+        self.adjustedDefence = 0
+        
     # Quit option
     def quit(self):
         print("%s has died of dysentery.\n" % self.name)

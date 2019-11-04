@@ -8,8 +8,8 @@ class Enemy(Character):
     self.name = enemyName
     self.health = randint(minHealth, maxHealth)
     self.health_max = maxHealth
-    self.minAttack = minattack
-    self.maxAttack = maxattack
+    self.baseAttack = [minattack, maxattack]
+    self.adjustedAttack = [minattack, maxattack]
     self.ineffectiveAttacks = ineffectiveAttacks
     self.row = row
     self.column = column

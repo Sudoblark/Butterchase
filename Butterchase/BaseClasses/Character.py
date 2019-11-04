@@ -17,15 +17,15 @@ class Character:
         self.name = ""
         self.health = 1
         self.health_max = 1
-        self.minAttack = 0
-        self.maxAttack = 1
+        self.baseAttack = [0, 10]
+        self.adjustedAttack = [0, 10]
         self.ineffectiveAttacks = True
         self.state = CharacterStates.Normal
 
     # Method to allow all characters to attack
     def do_damage(self, enemy, isTired):
         # Calculate damage
-        damage = randint(self.minAttack, self.maxAttack)
+        damage = randint(self.adjustedAttack[0], self.adjustedAttack[1])
         # If char is tired then half damage
         if isTired:
             damage = damage / 2

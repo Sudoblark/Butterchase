@@ -33,7 +33,6 @@ class Level:
                 self.levelMap[EnemyRow][EnemyColumn] = Enemy
                 Counter += 1
 
-
     # Method that announces to the user that they're in the room
     def EntranceMessage(self):
         if self.alreadyEntered == False:
