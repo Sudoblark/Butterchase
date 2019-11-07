@@ -151,6 +151,7 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 - [ ] Each level to have list of possible treasure and dice rolls to determine what player recieved. If on a treasure tile the player always gets an item from a randomly generated list appropriate for the level 
 - [ ] Use weapon and armour flavour text where appropriate
 - [ ] 1 in 100 chance for treasure to be cursed and spawn a new enemy type of demon
+- [ ] Steal weapon from enemy
 
 #### Companion System
 - [ ] Add mechanics for followers
