@@ -144,8 +144,8 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 
 
 #### Inventory System
-- [ ] Add evade mechanic
-- [ ] Add base/adjusted attack to all characters
+- [x] Add evade mechanic
+- [x] Add base/adjusted attack to all characters
 - [ ] Create weapons and armour for each enemy class
 - [ ] Have enemies equip random weapons and armour on spawn
 - [ ] Create player weapons and armour

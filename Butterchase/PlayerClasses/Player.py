@@ -1,9 +1,10 @@
-# Required for sleep check
+# Required for sleep check and random items
 from random import randint
 # Required to hold states
 from BaseClasses.CharacterStates import CharacterStates
 from BaseClasses.Character import Character
 from BaseClasses.Enemy import Enemy
+from TreasureClasses.Basic import PlayerItems
 
 
 
@@ -29,6 +30,12 @@ class Player(Character):
         # Evade chance
         self.adjustedEvadeChance = 6
         self.evadeAttack = [0, self.adjustedEvadeChance]
+        
+        # equip random items
+        self.weapon = PlayerItems.PlayerWeapons[randint(0,(len(PlayerItems.PlayerWeapons)-1))]
+        self.armour = PlayerItems.PlayerArmour[randint(0,(len(PlayerItems.PlayerArmour) -1))]
+        self.weapon.player = self
+        self.armour.player = self
 
     # Quit option
     def quit(self):
@@ -81,7 +88,7 @@ class Player(Character):
                 print("%s was unable to flee!" % self.name)
                 self.tired()
             else:
-                print("%s feels from %s" % (self.name, self.enemy.name))
+                print("%s flee from %s" % (self.name, self.enemy.name))
                 self.enemy = None
                 self.state = CharacterStates.Normal
                 self.tired()
@@ -91,7 +98,7 @@ class Player(Character):
             print("%s swats the air, without any noticable results. The cave walls offer silent judgment on their life choices." % self.name)
         else:
             if self.do_damage(self.enemy, self.isTired):
-                print("%s executes %s!" % (self.name, self.enemy.name))
+                self.weapon.executionText(self.enemy)
                 # Remove enemy from level
                 self.level.RemoveItem(self.enemy.row, self.enemy.column)
                 # Set player enemy to none
@@ -107,7 +114,7 @@ class Player(Character):
     # Enemy attack option
     def enemy_attacks(self):
         if self.enemy.do_damage(self, False):
-            print("%s was slaughtered by %s!!" % (self.name, self.enemy.name))
+            self.enemy.weapon.executionText(self)
     # Go forward in level option
     def levelLeft(self):
         self.level.GoLeft()

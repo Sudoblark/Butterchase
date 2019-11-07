@@ -16,3 +16,5 @@ class Enemy(Character):
     self.baseDefence = 0
     self.adjustedDefence = 0
     self.evadeAttack = [0,evadeInt]
+    self.weapon = None
+    self.armour = None

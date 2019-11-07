@@ -24,6 +24,9 @@ class Character:
         self.ineffectiveAttacks = True
         self.state = CharacterStates.Normal
         self.evadeAttack = [0,100]
+        # equip random items
+        self.weapon = None
+        self.armour = None
 
     # Method to allow all characters to attack
     def do_damage(self, enemy, isTired):
@@ -52,7 +55,7 @@ class Character:
             print("%s evades %s's attack." % (enemy.name, self.name))
         #If no damage done
         elif damage <= 0:
-            print ("%s is totally unphased by %s's attack" % (enemy.name, self.name))
+            enemy.armour.defenceFlavour(self)
         # Else
         elif damage > 0:
-            print ("%s hurts %s!" %( self.name, enemy.name))
+            self.weapon.attackFlavour(enemy)
