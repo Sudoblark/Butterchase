@@ -20,11 +20,13 @@ class Treasure():
 
     # Equip action
     def equip(self):
-        self.player.adjustedAttack += self.attack
+        self.player.adjustedAttack[0] += self.attack
+        self.player.adjustedAttack[1] += self.attack
         self.player.adjustedDefence += self.armour
     # Unequip action
     def unequip(self, player):
-        self.player.adjustedAttack -= self.attack
+        self.player.adjustedAttack[0] -= self.attack
+        self.player.adjustedAttack[1] -= self.attack
         self.player.adjustedDefence -= self.armour
     # Placeholder attack method, to be overwritten by instances of class
     def attackFlavour(self, enemy):

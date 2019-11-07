@@ -36,6 +36,8 @@ class Player(Character):
         self.armour = PlayerItems.PlayerArmour[randint(0,(len(PlayerItems.PlayerArmour) -1))]
         self.weapon.player = self
         self.armour.player = self
+        self.weapon.equip()
+        self.armour.equip()
 
     # Quit option
     def quit(self):

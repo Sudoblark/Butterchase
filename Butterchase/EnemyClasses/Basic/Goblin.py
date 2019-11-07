@@ -13,4 +13,6 @@ class Goblin(Enemy):
         self.armour = GoblinItems.GoblinArmour[randint(0,(len(GoblinItems.GoblinArmour) -1))]
         self.weapon.player = self
         self.armour.player = self
+        self.weapon.equip()
+        self.armour.equip()
     
