@@ -53,6 +53,8 @@ Steve has died of dysentery.
 
 ## Mechanics
 - If the player is tired then they do half damage
+- Chars can dodge
+- Randomly generated levels with enemies/traps/loot
 
 ## Tests
 - Executing Butterchase\EnemyClasses\ClassSheets\Util.py will test the ReturnName function on all ClassSheets. For example:
