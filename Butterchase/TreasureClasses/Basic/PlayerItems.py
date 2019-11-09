@@ -10,10 +10,10 @@ class Hands(Treasure):
         def __init__(self):
             Treasure.__init__(self, TreasureTypes.Weapon, 1, 0, "Bare Hands")
         def attackFlavour(self, enemy):
-            msg = "{1} is reeled by a brutal uppercut by {2}".format(enemy.name, self.player.name)
+            msg = "{0} is reeled by a brutal uppercut by {1}".format(enemy.name, self.player.name)
             msg1 = "{0} sidesteps {1} and delivers a body shot".format(self.player.name, enemy.name)
-            msg2 = "{1} lunges forward, {2} ducks and headbutts their genitalia".format(enemy.name, self.player.name)
-            msg3 = "{0} lands a jab on {2}".format(self.player.name, enemy.name)
+            msg2 = "{1} lunges forward, {0} ducks and headbutts their genitalia".format(enemy.name, self.player.name)
+            msg3 = "{0} lands a jab on {1}".format(self.player.name, enemy.name)
             msgArray = [msg, msg1, msg2, msg3]
             print(GetRandomMessage(msgArray))
         def executionText(self, enemy):

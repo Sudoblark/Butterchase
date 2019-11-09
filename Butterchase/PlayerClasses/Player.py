@@ -32,12 +32,21 @@ class Player(Character):
         self.evadeAttack = [0, self.adjustedEvadeChance]
         
         # equip random items
-        self.weapon = PlayerItems.PlayerWeapons[randint(0,(len(PlayerItems.PlayerWeapons)-1))]
-        self.armour = PlayerItems.PlayerArmour[randint(0,(len(PlayerItems.PlayerArmour) -1))]
+        weaponTemp = PlayerItems.PlayerWeapons[randint(0,(len(PlayerItems.PlayerWeapons)-1))]
+        self.weapon = weaponTemp
+        armourTemp = PlayerItems.PlayerArmour[randint(0,(len(PlayerItems.PlayerArmour) -1))]
+        self.armour = armourTemp
         self.weapon.player = self
         self.armour.player = self
         self.weapon.equip()
         self.armour.equip()
+        # add to new list of items for inventory purposes
+        self.weaponList = [weaponTemp]
+        self.armourList = [armourTemp]
+        # track killed enemies
+        self.killedEnemies = 0
+        # track stat level
+        self.statLevel = 0
 
     # Quit option
     def quit(self):
@@ -48,8 +57,20 @@ class Player(Character):
         print(Commands.keys())
     # Status option
     def status(self):
-        print("%s's health: %d/%d" % (self.name, self.health, self.health_max))
-        print("Is %s tired: %s" % (self.name, self.isTired))
+        # health and tired and general stats
+        print("Name: {0}".format(self.name))
+        print("Health: {0}/{1}".format(self.health, self.health_max))
+        print("Tired: {0}".format(self.isTired))
+        print("Stat Level: {0}".format(self.statLevel))
+        print("Enemies killed: {0}".format(self.killedEnemies))
+
+        # attack and defence
+        print("Attack range: {0} - {1}".format(self.adjustedAttack[0], self.adjustedAttack[1]))
+        print ("Defence: {0}".format(self.adjustedDefence))
+        # equipped items
+        print("Equipped weapon: {0} (+{1} attack)".format(self.weapon.name, self.weapon.attack))
+        print("Equipped armour: {0} (+{1} defence)".format(self.armour.name, self.armour.armour))
+
         self.level.Status()
     # tired option
     def tired(self):
@@ -101,6 +122,7 @@ class Player(Character):
         else:
             if self.do_damage(self.enemy, self.isTired):
                 self.weapon.executionText(self.enemy)
+                self.killedEnemies += 1
                 # Remove enemy from level
                 self.level.RemoveItem(self.enemy.row, self.enemy.column)
                 # Set player enemy to none
@@ -109,7 +131,12 @@ class Player(Character):
                 self.state = CharacterStates.Normal
                 if (randint(0, self.health) < 10):
                     self.health = self.health + 1
-                    self.health_max = self.health_max +1
+                    self.health_max = self.health_max + 1
+                    self.adjustedAttack[0] += 1
+                    self.adjustedAttack[1] += 1
+                    self.adjustedDefence += 1
+                    self.statLevel += 1
+
                     print("%s feels stronger!" % (self.name))
             else:
                 self.enemy_attacks()

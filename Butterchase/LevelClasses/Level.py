@@ -7,6 +7,13 @@ from EnemyClasses.Advanced.Orc import Orc
 from EnemyClasses.Advanced.Skeleton import Skeleton
 from EnemyClasses.Serious.Troll import Troll
 from EnemyClasses.Serious.Ogre import Ogre
+from enum import Enum
+
+# Treasure type enum
+class LevelClasses(Enum):
+    Basic = 0
+    Advanced = 1
+    Serious = 2
 
 # Level base
 class Level:
@@ -167,24 +174,28 @@ class Level:
         if randint(0,20) == 15:
             self.player.tired()
     
-    def GenerateLevel(self, minRows, maxRows, minColumns, maxColumns):
+    def GenerateLevel(self, minRows, maxRows, minColumns, maxColumns, levelBase):
+        # check that levelBase is of appropriate type
+        if not isinstance(levelBase, LevelClasses):
+            raise TypeError("type must be an instance of the LevelClasses Enum")
+        self.levelClass = levelBase
         # Array to hold all rows and columns
-       self.levelMap = []
-       # Set current row
-       CurrentRow = 0
-       # Randomly determine max rows
-       LevelMaxRows = self.EnsureEven(randint(minRows, maxRows))
-       # Set largest column
-       self.largestColumns = 0
-       # Create random number of rows
-       while CurrentRow <= LevelMaxRows:
-            NewRow = []
-            NewRowColumns = self.EnsureEven(randint(minColumns, maxColumns))
-            CurrentColumn = 0
-            # Create random number of columns inside row
-            while CurrentColumn <= NewRowColumns:
-                # Ensure we populate first row and column with 1
-                # Also ensure we populate last row and column with 1
+        self.levelMap = []
+        # Set current row
+        CurrentRow = 0
+        # Randomly determine max rows
+        LevelMaxRows = self.EnsureEven(randint(minRows, maxRows))
+        # Set largest column
+        self.largestColumns = 0
+        # Create random number of rows
+        while CurrentRow <= LevelMaxRows:
+             NewRow = []
+             NewRowColumns = self.EnsureEven(randint(minColumns, maxColumns))
+             CurrentColumn = 0
+             # Create random number of columns inside row
+             while CurrentColumn <= NewRowColumns:
+                 # Ensure we populate first row and column with 1
+                 # Also ensure we populate last row and column with 1
                 if (CurrentRow == 0) & (CurrentColumn == 0):
                     NewRow.append(1)
                 elif (CurrentRow == LevelMaxRows) & (CurrentColumn == NewRowColumns):
@@ -192,12 +203,12 @@ class Level:
                 else:
                     NewRow.append(0)
                 CurrentColumn += 1
-            # Pad row with impassable tiles
-            self.PadRow(NewRow, maxColumns)
-            # Append new row to overall level
-            self.levelMap.append(NewRow)
-            # Increment current row
-            CurrentRow += 1
+             # Pad row with impassable tiles
+             self.PadRow(NewRow, maxColumns)
+             # Append new row to overall level
+             self.levelMap.append(NewRow)
+             # Increment current row
+             CurrentRow += 1
 
     # Method to ensure that values are even
     # Required so that level rows and columns are even
