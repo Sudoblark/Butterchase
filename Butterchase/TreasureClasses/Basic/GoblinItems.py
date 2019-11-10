@@ -1,23 +1,32 @@
 # Import base
 from TreasureClasses.Treasure import Treasure, TreasureTypes
-
-class IdioticSword(Treasure):
-    def __init__(self):
-        Treasure.__init__(self, TreasureTypes.Weapon,4,0,"Idiotic Sword")
-    def attackFlavour(self, enemy):
-        print("%s somehow manages to swat %s with his bloody stupid sword" % (self.player.name, enemy.name))
-    def executionText(self, enemy):
-        print("Bloody hell. %s actually managed to kill %s with this %s." % (self.player.name, enemy.name, self.name))
-
-class IdioticArmour(Treasure):
-    def __init__(self):
-        Treasure.__init__(self, TreasureTypes.Armour, 0, 5, "Loin Cloth")
-    def defenceFlavour(self, enemy):
-        print("%s recoils in disgust, %s's %s is far too revealing" % (enemy.name, self.player.name, self.name))
-
+#region weapons
+class PintGlass(Treasure):
+    pass
+class SteelChair(Treasure):
+    pass
+class BrassKnuckles(Treasure):
+    pass
+class SnookerCue(Treasure):
+    pass
+class Keg(Treasure):
+    pass
+#endregion weapons
     
-TestWeapon = IdioticSword()
-TestArmour = IdioticArmour()    
+#region armour
+class BinLid(Treasure):
+    pass
+class BeerCans(Treasure):
+    pass
+class QuestionableHelmet(Treasure):
+    pass
+class PizzaBox(Treasure):
+    pass
+class Bio(Treasure):
+    pass
+
+
+#endregion armour  
 # Item arrays that get reference
-GoblinWeapons = [TestWeapon]
-GoblinArmour = [TestArmour]
+GoblinWeapons = [PintGlass(), SteelChair(), BrassKnuckles(), SnookerCue(), Keg()]
+GoblinArmour = [BinLid(), BeerCans(), QuestionableHelmet(), PizzaBox(), Bio()]

@@ -5,6 +5,7 @@ from random import randint
 def GetRandomMessage(Array):
     return Array[randint(0, len(Array) -1)]
 
+##### Anglo Saxon style items
 #region Weapons
 class Hands(Treasure):
         def __init__(self):
@@ -42,14 +43,18 @@ class IdioticSword(Treasure):
         print(GetRandomMessage(msgArray))
 class WoodenClub(Treasure):
     def __init__(self):
-        Treasure.__init__(self, TreasureTypes.Weapon, 5, 0, "Wooden Club")
+        Treasure.__init__(self, TreasureTypes.Weapon, 4, 0, "Wooden Club")
     def attackFlavour(self, enemy):
         msg = "{0} wacks {1} upside the head. {0} isn't sure if the woodemn thud comes from {1} or {2}".format(self.player.name, enemy.name, self.name)
         print(msg)
     def executionText(self, enemy):
         msg = "{0} clumps {1} with {2}, turning their brain to mush".format(self.player.name, enemy.name, self.name)
         print(msg)
-
+class Seax(Treasure):
+    def __init__(self):
+        Treasure.__init__(self, TreasureTypes.Weapon, 5, 0, "Seax")
+class Spear(Treasure):
+    pass
 #endregion
 
 #region armour
@@ -58,14 +63,20 @@ class IdioticArmour(Treasure):
         Treasure.__init__(self, TreasureTypes.Armour, 0, 1, "Loin Cloth")
     def defenceFlavour(self, enemy):
         print("%s recoils in disgust, %s's %s is far too revealing" % (enemy.name, self.player.name, self.name))
-class Scutum(Treasure):
+class BasicShield(Treasure):
     def __init__(self):
         Treasure.__init__(self, TreasureTypes.Armour, 0, 3, "Scutum")
     def defenceFlavour(self,enemy):
         pass
+class LeatherArmour(Treasure):
+    pass
+class StuddedLeatherArmour(Treasure):
+    pass
+class Doublet(Treasure):
+    pass
 
 #endregion
 # Item arrays that get reference
-PlayerWeapons = [Hands(), IdioticSword(), WoodenClub()]
-PlayerArmour = [TestArmour]
+PlayerWeapons = [Hands(), IdioticSword(), WoodenClub(), Seax(), Spear()]
+PlayerArmour = [IdioticArmour, BasicShield(), LeatherArmour(), StuddedLeatherArmour(), Doublet()]
 
