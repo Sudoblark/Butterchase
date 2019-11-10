@@ -4,6 +4,37 @@ class PlayerInventory():
     def __init__(self, maxchar, player):
         self.maxChars = maxchar
         self.player = player
+
+    def PlayerInteraction(self):
+        # Method to interact with player
+        playerQuit = False
+        self.OutputInventory()
+        self.promptInput()
+        while playerQuit == False:
+            playerQuit = self.readInput()
+
+    def promptInput(self):
+        print("Enter equip to equip an item, unequip to unequip an item and exit to leave the inventory system.")
+        print("Note: You cannot have more than one armour/weapon piece equipped at a time.")
+        print("")
+
+    def readInput(self):
+        line = input("> ")
+        inputFound = False
+        if line == "exit":
+            inputFound = True
+            print("Leaving inventory system...")
+            return True
+        elif line == "equip":
+            print("equip!")
+            return False
+        elif line == "unequip":
+            print("unequip!") 
+            return False           
+        if not inputFound:
+            print ("%s stares as his inventory dumbfounded (try another command)." % self.player.name)
+            return False 
+
     def OutputInventory(self):
         FinalOutput = "\n" + self.ReturnHeader()
         FinalOutput += self.ReturnWeapons(self.player.weaponList)

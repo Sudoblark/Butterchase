@@ -159,7 +159,7 @@ class Player(Character):
     def level_map(self):
         self.level.showMap()
     def inventory(self):
-        self.inventoryManager.OutputInventory()
+        self.inventoryManager.PlayerInteraction()
 
 
 

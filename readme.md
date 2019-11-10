@@ -149,11 +149,12 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 - [ ] Create weapons and armour for each enemy class
 - [ ] Have enemies equip random weapons and armour on spawn
 - [ ] Create player weapons and armour
-- [ ] Add weapons and armour to chests
-- [ ] Each level to have list of possible treasure and dice rolls to determine what player recieved. If on a treasure tile the player always gets an item from a randomly generated list appropriate for the level 
+- [x] Add weapons and armour to chests
+- [x] Each level to have list of possible treasure and dice rolls to determine what player recieved. If on a treasure tile the player always gets an item from a randomly generated list appropriate for the level 
 - [ ] Use weapon and armour flavour text where appropriate
-- [ ] 1 in 100 chance for treasure to be cursed and spawn a new enemy type of demon
+- [x] 1 in 100 chance for treasure to be cursed and spawn a new enemy type of demon
 - [ ] Steal weapon from enemy
+- [ ] Allow equip/unequip of items
 
 #### Companion System
 - [ ] Add mechanics for followers
