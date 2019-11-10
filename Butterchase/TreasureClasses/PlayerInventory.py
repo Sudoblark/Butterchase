@@ -7,33 +7,25 @@ class PlayerInventory():
 
     def PlayerInteraction(self):
         # Method to interact with player
-        playerQuit = False
         self.OutputInventory()
         self.promptInput()
-        while playerQuit == False:
-            playerQuit = self.readInput()
+        self.readInput()
 
     def promptInput(self):
-        print("Enter equip to equip an item, unequip to unequip an item and exit to leave the inventory system.")
+        print("Enter equip to equip an item")
         print("Note: You cannot have more than one armour/weapon piece equipped at a time.")
         print("")
 
     def readInput(self):
-        line = input("> ")
+        line = input("Inventory > ")
         inputFound = False
         if line == "exit":
             inputFound = True
             print("Leaving inventory system...")
-            return True
         elif line == "equip":
             # If we equipped an item then exit inventory
-            if self.equip() == True:
-                inputFound = True
-                return True
-        elif line == "unequip":
-            if self.unequip() == True:
-                inputFound = True
-                return True        
+            inputFound = True
+            self.equip()     
         if not inputFound:
             print ("%s stares as his inventory dumbfounded (try another command)." % self.player.name)
             return False 
@@ -154,14 +146,15 @@ class PlayerInventory():
 
     def equip(self):
         print("Please enter the item you wish to equip")
-        line = input("> ")
+        line = input("Inventory > Equip > ")
         # first check weapons
         for i in self.player.weaponList:
             # if item is a match
             if i.name == line:
                 # check if already equipped
                 if i.currentEquipped == True:
-                    print("Item is already equipped")
+                    msg = "{0} looks down, he's already holding {1} in his hands".format(self.player.name, i.name)
+                    print(msg)
                 # if player already has a weapon equipped
                 elif self.player.weapon != None:
                     previousWeapon = self.player.weapon.name
@@ -185,7 +178,8 @@ class PlayerInventory():
             if i.name == line:
                 # check if already equipped
                 if i.currentEquipped == True:
-                    print("Item is already equipped")
+                    msg = "{0} is already wearing the fashionable {1}".format(self.player.name, i.name)
+                    print(msg)
                 # if player already has a weapon equipped
                 elif self.player.armour != None:
                     previousArmour = self.player.armour.name
@@ -205,41 +199,3 @@ class PlayerInventory():
                     return True
         # Return false is unable to equip an item
         return False
-
-    def unequip(self):
-        print("Please enter the item you wish to unequip")
-        line = input("> ")
-        # first check weapons
-        for i in self.player.weaponList:
-            # if item is a match
-            if i.name == line:
-                # check if already equipped
-                if i.currentEquipped == True:
-                    i.unequip()
-                    self.player.weapon = None
-                    msg = "{0} puts {1} back into his pack".format(self.player.name, i.name)
-                    print(msg)
-                    return True
-                else:
-                    msg = "{0} looks at his hands, he isn't holding {1}...".format(self.player.name, i.name)
-                    print(msg)
-                    return False
-        # then check armour
-        for i in self.player.armourList:
-            # if item is a match
-            if i.name == line:
-                # check if already equipped
-                if i.currentEquipped == True:
-                    i.unequip()
-                    self.player.armour = None
-                    msg = "{0} removes {1} after a few minutes, and stows it in his pack".format(self.player.name, i.name)
-                    print(msg)
-                    return True
-                else:
-                    msg = "{0} looks down, he isn't wearing {1}...".format(self.player.name, i.name)
-                    print(msg)
-                    return False
-        # Return false is unable to equip an item
-        return False
-
-
