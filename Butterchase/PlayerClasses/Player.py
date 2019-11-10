@@ -5,6 +5,7 @@ from BaseClasses.CharacterStates import CharacterStates
 from BaseClasses.Character import Character
 from BaseClasses.Enemy import Enemy
 from TreasureClasses.Basic import PlayerItems
+from TreasureClasses.PlayerInventory import PlayerInventory
 
 
 
@@ -47,6 +48,8 @@ class Player(Character):
         self.killedEnemies = 0
         # track stat level
         self.statLevel = 0
+        # inventory management
+        self.inventoryManager = PlayerInventory(100, self)
 
     # Quit option
     def quit(self):
@@ -155,6 +158,8 @@ class Player(Character):
         self.level.GoDown()
     def level_map(self):
         self.level.showMap()
+    def inventory(self):
+        self.inventoryManager.OutputInventory()
 
 
 
@@ -173,4 +178,5 @@ Commands = {
     'goUp': Player.levelUp,
     'goDown' :  Player.levelDown,
     'showMap' : Player.level_map,
+    'inventory' : Player.inventory,
 }
