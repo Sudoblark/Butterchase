@@ -12,6 +12,7 @@ class Level_One(Level):
         self.playerRow = 0
         self.playerColumn = (self.levelMap[0].index(1)) + 1
         self.populateEnemyList(2,3)
+        self.populateTreasureList(1)
         self.levelExploreMsg = "%s peers ahead. In the distance there is an outcropping in the stone..." % self.player.name
 
     def EntranceMessage(self):

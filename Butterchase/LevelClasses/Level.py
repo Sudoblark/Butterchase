@@ -39,6 +39,17 @@ class Level:
             if (self.levelMap[EnemyRow][EnemyColumn] == 0) & (self.playerRow != EnemyRow) & (self.playerColumn != EnemyColumn):
                 self.levelMap[EnemyRow][EnemyColumn] = Enemy
                 Counter += 1
+    # method to populate treasure chests in level
+    def populateTreasureList(self, numOfChests):
+        Counter = 0
+        while Counter < numOfChests:
+            # Get a random row and column
+            EnemyRow = randint(0, (len(self.levelMap)) -1)
+            EnemyColumn = randint(0, (len(self.levelMap[0]) -1))
+            # Make tile is empty and player is not there
+            if (self.levelMap[EnemyRow][EnemyColumn] == 0) & (self.playerRow != EnemyRow) & (self.playerColumn != EnemyColumn):
+                self.levelMap[EnemyRow][EnemyColumn] = 9
+                Counter += 1
 
     # Method that announces to the user that they're in the room
     def EntranceMessage(self):
@@ -149,6 +160,21 @@ class Level:
             self.player.enemy = Troll(self.player, newRow, newColumn)
             self.player.state = CharacterStates.Fight
             print("%s encounters %s!" % (self.player.name, self.player.enemy.name))
+        elif newTile == 9:
+            # grant player treasure
+            print("Treasure!")
+            # remove chest from map
+            self.levelMap[newRow][newColumn] = 0
+            # move player
+            # Depending on player movement increment column or rows
+            if Movement == "Right":
+                self.playerColumn += 1
+            elif Movement == "Left":
+                self.playerColumn -= 1
+            elif Movement == "Up":
+                self.playerRow -= 1
+            elif Movement == "Down":
+                self.playerRow += 1
 
     def RemoveItem(self, row, column):
         self.levelMap[row][column] = 0
