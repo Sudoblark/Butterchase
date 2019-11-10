@@ -232,7 +232,6 @@ class Level:
 
     # Method to show player a map of where they are
     def showMap(self):
-        print(self.levelMap)
         # First make the base
         Base = ""
         #Iterate through level map
@@ -316,10 +315,12 @@ class Level:
         Header += self.ReturnNewLegend(" g = Goblin G = Goatman" ,HeaderGap)
         Header += self.ReturnNewLegend(" o = Orc s = Skeleton" ,HeaderGap)
         Header += self.ReturnNewLegend(" O = Ogre T = Troll" ,HeaderGap)
+        print("")
         print(Header)
         print("".join(Walls))
         print(Base)
         print("".join(Walls))
+        print("")
 
     def ReturnNewLegend(self, msg, headerGap):
         Content = "\n"
