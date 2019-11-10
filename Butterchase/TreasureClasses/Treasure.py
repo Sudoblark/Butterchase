@@ -26,7 +26,7 @@ class Treasure():
         self.player.adjustedDefence += self.armour
         self.currentEquipped = True
     # Unequip action
-    def unequip(self, player):
+    def unequip(self):
         self.player.adjustedAttack[0] -= self.attack
         self.player.adjustedAttack[1] -= self.attack
         self.player.adjustedDefence -= self.armour
