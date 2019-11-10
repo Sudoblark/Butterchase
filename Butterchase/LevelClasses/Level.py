@@ -8,6 +8,9 @@ from EnemyClasses.Advanced.Skeleton import Skeleton
 from EnemyClasses.Serious.Troll import Troll
 from EnemyClasses.Serious.Ogre import Ogre
 from enum import Enum
+from TreasureClasses.Basic.PlayerItems import PlayerWeapons as BasicWeapons
+from TreasureClasses.Basic.PlayerItems import PlayerArmour as BasicArmour
+
 
 # Treasure type enum
 class LevelClasses(Enum):
@@ -162,9 +165,7 @@ class Level:
             print("%s encounters %s!" % (self.player.name, self.player.enemy.name))
         elif newTile == 9:
             # grant player treasure
-            print("Treasure!")
-            # remove chest from map
-            self.levelMap[newRow][newColumn] = 0
+            self.TreasureDetection(newRow, newColumn)
             # move player
             # Depending on player movement increment column or rows
             if Movement == "Right":
@@ -175,6 +176,45 @@ class Level:
                 self.playerRow -= 1
             elif Movement == "Down":
                 self.playerRow += 1
+    def TreasureDetection(self, newRow, newColumn):
+        # first, one in 100 chance of spawning an ogre
+        ## will change to demon later!
+        if randint(0,100) == 1:
+            self.player.enemy = Ogre(self.player, newRow, newColumn)
+            print("%s opens the chest. Crammed inside is %s, who pops out ready to fight" % (self.player.name, self.player.enemy.name))
+        # Otherwise we're nice and grant the player some loot
+        else:
+            # determine if treasure or armour
+            TypeRoll = randint(0,1)
+            # then grant loot based on level class
+            if self.levelClass == LevelClasses.Basic:
+                if TypeRoll == 1:
+                    RandomWeapon = self.ReturnNonEquippedItem(BasicWeapons)
+                    self.player.weaponList.append(RandomWeapon)
+                    msg = "{0} finds {1} in the chest!".format(self.player.name, RandomWeapon.name)
+                    print(msg)
+                else:
+                    RandomArmour = self.ReturnNonEquippedItem(BasicArmour)
+                    self.player.armourList.append(RandomArmour)
+                    msg = "{0} finds {1} in the chest!".format(self.player.name, RandomArmour.name)
+                    print(msg)
+
+            elif self.levelClass == LevelClasses.Advanced:
+                pass
+
+            elif self.levelClass == LevelClasses.Serious:
+                pass
+
+        # Finally remove the chest from the map
+        self.RemoveItem(newRow, newColumn)
+
+    def ReturnNonEquippedItem(self, List):
+        ItemFound = False
+        while ItemFound != True:
+            RandomItem = List[randint(0,(len(List)-1))]
+            if RandomItem.currentEquipped == False:
+                ItemFound = True
+        return RandomItem
 
     def RemoveItem(self, row, column):
         self.levelMap[row][column] = 0

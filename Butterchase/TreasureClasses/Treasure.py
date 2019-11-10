@@ -17,17 +17,20 @@ class Treasure():
         self.name = name
         # To be assigned after creation
         self.player = None
+        self.currentEquipped = False
 
     # Equip action
     def equip(self):
         self.player.adjustedAttack[0] += self.attack
         self.player.adjustedAttack[1] += self.attack
         self.player.adjustedDefence += self.armour
+        self.currentEquipped = True
     # Unequip action
     def unequip(self, player):
         self.player.adjustedAttack[0] -= self.attack
         self.player.adjustedAttack[1] -= self.attack
         self.player.adjustedDefence -= self.armour
+        self.currentEquipped = False
     # Placeholder attack method, to be overwritten by instances of class
     def attackFlavour(self, enemy):
         pass

@@ -38,10 +38,10 @@ class PlayerInventory():
             # generate line - WORKS
             ItemLine = "{0} (+{1} attack".format(ItemName, ItemAttack)
             # check if equipped
-            if weaponList[Counter] == self.player.weapon:
-                ItemLine += " - equipped)"
+            if weaponList[Counter].currentEquipped == True:
+                ItemLine += " - equipped) "
             else:
-                ItemLine += ")"
+                ItemLine += ") "
             # If new line length would not be over the limit and this is not the last iteration
             if ((len(NewLine) + len(ItemLine)) < (self.maxChars -2)) & (Counter != (MaxItems -1)):
                 NewLine += ItemLine
