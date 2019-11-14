@@ -190,13 +190,19 @@ class Level:
             if self.levelClass == LevelClasses.Basic:
                 if TypeRoll == 1:
                     RandomWeapon = self.ReturnNonEquippedItem(BasicWeapons)
-                    self.player.weaponList.append(RandomWeapon)
-                    msg = "{0} finds {1} in the chest!".format(self.player.name, RandomWeapon.name)
+                    if RandomWeapon != None:
+                        self.player.weaponList.append(RandomWeapon)
+                        msg = "{0} finds {1} in the chest!".format(self.player.name, RandomWeapon.name)
+                    else:
+                        msg = "{0} peers into the chest, nothing but dust and bad life choices".format(self.player.name)
                     print(msg)
                 else:
                     RandomArmour = self.ReturnNonEquippedItem(BasicArmour)
-                    self.player.armourList.append(RandomArmour)
-                    msg = "{0} finds {1} in the chest!".format(self.player.name, RandomArmour.name)
+                    if RandomArmour != None:
+                        self.player.armourList.append(RandomArmour)
+                        msg = "{0} finds {1} in the chest!".format(self.player.name, RandomArmour.name)
+                    else:
+                        msg = "{0} peers into the chest, nothing but dust and bad life choices".format(self.player.name)
                     print(msg)
 
             elif self.levelClass == LevelClasses.Advanced:
@@ -210,9 +216,19 @@ class Level:
 
     def ReturnNonEquippedItem(self, List):
         ItemFound = False
+        NumberOfRolls = 0
+        # check for item that player does not already have
         while ItemFound != True:
             RandomItem = List[randint(0,(len(List)-1))]
             if RandomItem.currentEquipped == False:
+                ItemFound = True
+            else:
+                # Increment number of rolls if player has item equipped
+                NumberOfRolls += 1
+            if NumberOfRolls == len(List):
+                # If player has rolled enough times without success
+                # we return nothing
+                RandomItem = None
                 ItemFound = True
         return RandomItem
 
