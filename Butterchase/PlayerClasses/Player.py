@@ -92,8 +92,8 @@ class Player(Character):
             self.isTired = False
             if self.health < self.health_max:
                 # If not at full health then increment by one after rest
-                self.health = self.health + 1
-                print("%s feels a little healthier now." % (self.name))
+                self.health = self.health_max
+                print("%s feels refreshed." % (self.name))
     # Explore option
     def explore(self):
         self.level.Explore()
