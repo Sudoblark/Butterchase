@@ -37,6 +37,6 @@ class BreastPlate(Treasure):
 
 #endregion   
 # Item arrays that get reference
-PlayerWeapons = [Gladius(), Pila(), Hoplite(), Sarius(), Flax()]
-PlayerArmour = [MailShirt(), LoricaHamata(), LoricaSquamata(), LinenShirt(), BreastPlate()]
+PlayerWeapons = [Gladius()]
+PlayerArmour = [MailShirt()]
 

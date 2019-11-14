@@ -77,6 +77,6 @@ class Doublet(Treasure):
 
 #endregion
 # Item arrays that get reference
-PlayerWeapons = [Hands(), IdioticSword(), WoodenClub(), Seax(), Spear()]
-PlayerArmour = [IdioticArmour, BasicShield(), LeatherArmour(), StuddedLeatherArmour(), Doublet()]
+PlayerWeapons = [Hands(), IdioticSword(), WoodenClub()]
+PlayerArmour = [IdioticArmour()]
 

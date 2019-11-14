@@ -12,7 +12,7 @@ class PlayerInventory():
         self.readInput()
 
     def promptInput(self):
-        print("Enter equip to equip an item")
+        print("Enter equip to equip an item, and exit to leave your inventory")
         print("Note: You cannot have more than one armour/weapon piece equipped at a time.")
         print("")
 
@@ -161,6 +161,7 @@ class PlayerInventory():
                     # equip current weapon
                     self.player.weapon.unequip()
                     # equip new weapon
+                    i.player = self.player
                     i.equip()
                     self.player.weapon = i
                     msg = "{0} swaps {1} for {2}".format(self.player.name, previousWeapon, i.name)

@@ -29,5 +29,5 @@ class Growl(Treasure):
 #endregion armour
 
 # Item arrays that get reference
-GoatmanWeapons = [Claws(), Horns(), Teeth(), Hands(), Legs()]
-GoatmanArmour = [Cuteness(), Fur(), Harness(), Collar(), Growl()]
+GoatmanWeapons = [Claws()]
+GoatmanArmour = [Cuteness()]
