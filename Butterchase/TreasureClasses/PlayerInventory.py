@@ -148,9 +148,11 @@ class PlayerInventory():
         print("Please enter the item you wish to equip")
         line = input("Inventory > Equip > ")
         # first check weapons
+        ItemFound = False
         for i in self.player.weaponList:
             # if item is a match
             if i.name == line:
+                ItemFound = True
                 # check if already equipped
                 if i.currentEquipped == True:
                     msg = "{0} looks down, he's already holding {1} in his hands".format(self.player.name, i.name)
@@ -177,6 +179,7 @@ class PlayerInventory():
         for i in self.player.armourList:
             # if item is a match
             if i.name == line:
+                ItemFound = True
                 # check if already equipped
                 if i.currentEquipped == True:
                     msg = "{0} is already wearing the fashionable {1}".format(self.player.name, i.name)
@@ -199,4 +202,8 @@ class PlayerInventory():
                     print(msg)
                     return True
         # Return false is unable to equip an item
+        # Also output an error
+        if ItemFound == False:
+            msg = "{0} can't find {1} in his inventory".format(self.player.name, line)
+            print(msg)
         return False
