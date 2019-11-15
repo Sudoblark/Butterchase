@@ -190,6 +190,7 @@ class PlayerInventory():
                     # equip current weapon
                     self.player.armour.unequip()
                     # equip new weapon
+                    i.player = self.player
                     i.equip()
                     self.player.armour = i
                     msg = "{0} swaps {1} for {2}".format(self.player.name, previousArmour, i.name)
