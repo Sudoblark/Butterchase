@@ -147,8 +147,8 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 - [x] Add evade mechanic
 - [x] Add base/adjusted attack to all characters
 - [ ] Create weapons and armour for each enemy class
-- [ ] Have enemies equip random weapons and armour on spawn
-- [ ] Create player weapons and armour
+- [x] Have enemies equip random weapons and armour on spawn
+- [x] Create player weapons and armour
 - [x] Add weapons and armour to chests
 - [x] Each level to have list of possible treasure and dice rolls to determine what player recieved. If on a treasure tile the player always gets an item from a randomly generated list appropriate for the level 
 - [x] Use weapon and armour flavour text where appropriate
