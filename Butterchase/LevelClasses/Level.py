@@ -7,6 +7,16 @@ from EnemyClasses.Advanced.Orc import Orc
 from EnemyClasses.Advanced.Skeleton import Skeleton
 from EnemyClasses.Serious.Troll import Troll
 from EnemyClasses.Serious.Ogre import Ogre
+from enum import Enum
+from TreasureClasses.Basic.PlayerItems import PlayerWeapons as BasicWeapons
+from TreasureClasses.Basic.PlayerItems import PlayerArmour as BasicArmour
+
+
+# Treasure type enum
+class LevelClasses(Enum):
+    Basic = 0
+    Advanced = 1
+    Serious = 2
 
 # Level base
 class Level:
@@ -32,7 +42,17 @@ class Level:
             if (self.levelMap[EnemyRow][EnemyColumn] == 0) & (self.playerRow != EnemyRow) & (self.playerColumn != EnemyColumn):
                 self.levelMap[EnemyRow][EnemyColumn] = Enemy
                 Counter += 1
-
+    # method to populate treasure chests in level
+    def populateTreasureList(self, numOfChests):
+        Counter = 0
+        while Counter < numOfChests:
+            # Get a random row and column
+            EnemyRow = randint(0, (len(self.levelMap)) -1)
+            EnemyColumn = randint(0, (len(self.levelMap[0]) -1))
+            # Make tile is empty and player is not there
+            if (self.levelMap[EnemyRow][EnemyColumn] == 0) & (self.playerRow != EnemyRow) & (self.playerColumn != EnemyColumn):
+                self.levelMap[EnemyRow][EnemyColumn] = 9
+                Counter += 1
 
     # Method that announces to the user that they're in the room
     def EntranceMessage(self):
@@ -143,6 +163,74 @@ class Level:
             self.player.enemy = Troll(self.player, newRow, newColumn)
             self.player.state = CharacterStates.Fight
             print("%s encounters %s!" % (self.player.name, self.player.enemy.name))
+        elif newTile == 9:
+            # grant player treasure
+            self.TreasureDetection(newRow, newColumn)
+            # move player
+            # Depending on player movement increment column or rows
+            if Movement == "Right":
+                self.playerColumn += 1
+            elif Movement == "Left":
+                self.playerColumn -= 1
+            elif Movement == "Up":
+                self.playerRow -= 1
+            elif Movement == "Down":
+                self.playerRow += 1
+    def TreasureDetection(self, newRow, newColumn):
+        # first, one in 100 chance of spawning an ogre
+        ## will change to demon later!
+        if randint(0,100) == 1:
+            self.player.enemy = Ogre(self.player, newRow, newColumn)
+            print("%s opens the chest. Crammed inside is %s, who pops out ready to fight" % (self.player.name, self.player.enemy.name))
+        # Otherwise we're nice and grant the player some loot
+        else:
+            # determine if treasure or armour
+            TypeRoll = randint(0,1)
+            # then grant loot based on level class
+            if self.levelClass == LevelClasses.Basic:
+                if TypeRoll == 1:
+                    RandomWeapon = self.ReturnNonEquippedItem(BasicWeapons)
+                    if RandomWeapon != None:
+                        self.player.weaponList.append(RandomWeapon)
+                        msg = "{0} finds {1} in the chest!".format(self.player.name, RandomWeapon.name)
+                    else:
+                        msg = "{0} peers into the chest, nothing but dust and bad life choices".format(self.player.name)
+                    print(msg)
+                else:
+                    RandomArmour = self.ReturnNonEquippedItem(BasicArmour)
+                    if RandomArmour != None:
+                        self.player.armourList.append(RandomArmour)
+                        msg = "{0} finds {1} in the chest!".format(self.player.name, RandomArmour.name)
+                    else:
+                        msg = "{0} peers into the chest, nothing but dust and bad life choices".format(self.player.name)
+                    print(msg)
+
+            elif self.levelClass == LevelClasses.Advanced:
+                pass
+
+            elif self.levelClass == LevelClasses.Serious:
+                pass
+
+        # Finally remove the chest from the map
+        self.RemoveItem(newRow, newColumn)
+
+    def ReturnNonEquippedItem(self, List):
+        ItemFound = False
+        NumberOfRolls = 0
+        # check for item that player does not already have
+        while ItemFound != True:
+            RandomItem = List[randint(0,(len(List)-1))]
+            if RandomItem.currentEquipped == False:
+                ItemFound = True
+            else:
+                # Increment number of rolls if player has item equipped
+                NumberOfRolls += 1
+            if NumberOfRolls == len(List):
+                # If player has rolled enough times without success
+                # we return nothing
+                RandomItem = None
+                ItemFound = True
+        return RandomItem
 
     def RemoveItem(self, row, column):
         self.levelMap[row][column] = 0
@@ -168,24 +256,28 @@ class Level:
         if randint(0,20) == 15:
             self.player.tired()
     
-    def GenerateLevel(self, minRows, maxRows, minColumns, maxColumns):
+    def GenerateLevel(self, minRows, maxRows, minColumns, maxColumns, levelBase):
+        # check that levelBase is of appropriate type
+        if not isinstance(levelBase, LevelClasses):
+            raise TypeError("type must be an instance of the LevelClasses Enum")
+        self.levelClass = levelBase
         # Array to hold all rows and columns
-       self.levelMap = []
-       # Set current row
-       CurrentRow = 0
-       # Randomly determine max rows
-       LevelMaxRows = self.EnsureEven(randint(minRows, maxRows))
-       # Set largest column
-       self.largestColumns = 0
-       # Create random number of rows
-       while CurrentRow <= LevelMaxRows:
-            NewRow = []
-            NewRowColumns = self.EnsureEven(randint(minColumns, maxColumns))
-            CurrentColumn = 0
-            # Create random number of columns inside row
-            while CurrentColumn <= NewRowColumns:
-                # Ensure we populate first row and column with 1
-                # Also ensure we populate last row and column with 1
+        self.levelMap = []
+        # Set current row
+        CurrentRow = 0
+        # Randomly determine max rows
+        LevelMaxRows = self.EnsureEven(randint(minRows, maxRows))
+        # Set largest column
+        self.largestColumns = 0
+        # Create random number of rows
+        while CurrentRow <= LevelMaxRows:
+             NewRow = []
+             NewRowColumns = self.EnsureEven(randint(minColumns, maxColumns))
+             CurrentColumn = 0
+             # Create random number of columns inside row
+             while CurrentColumn <= NewRowColumns:
+                 # Ensure we populate first row and column with 1
+                 # Also ensure we populate last row and column with 1
                 if (CurrentRow == 0) & (CurrentColumn == 0):
                     NewRow.append(1)
                 elif (CurrentRow == LevelMaxRows) & (CurrentColumn == NewRowColumns):
@@ -193,12 +285,12 @@ class Level:
                 else:
                     NewRow.append(0)
                 CurrentColumn += 1
-            # Pad row with impassable tiles
-            self.PadRow(NewRow, maxColumns)
-            # Append new row to overall level
-            self.levelMap.append(NewRow)
-            # Increment current row
-            CurrentRow += 1
+             # Pad row with impassable tiles
+             self.PadRow(NewRow, maxColumns)
+             # Append new row to overall level
+             self.levelMap.append(NewRow)
+             # Increment current row
+             CurrentRow += 1
 
     # Method to ensure that values are even
     # Required so that level rows and columns are even
@@ -222,7 +314,6 @@ class Level:
 
     # Method to show player a map of where they are
     def showMap(self):
-        print(self.levelMap)
         # First make the base
         Base = ""
         #Iterate through level map
@@ -306,10 +397,12 @@ class Level:
         Header += self.ReturnNewLegend(" g = Goblin G = Goatman" ,HeaderGap)
         Header += self.ReturnNewLegend(" o = Orc s = Skeleton" ,HeaderGap)
         Header += self.ReturnNewLegend(" O = Ogre T = Troll" ,HeaderGap)
+        print("")
         print(Header)
         print("".join(Walls))
         print(Base)
         print("".join(Walls))
+        print("")
 
     def ReturnNewLegend(self, msg, headerGap):
         Content = "\n"

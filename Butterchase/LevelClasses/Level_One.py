@@ -1,4 +1,4 @@
-from LevelClasses.Level import Level
+from LevelClasses.Level import Level, LevelClasses
 from random import randint
 from BaseClasses.CharacterStates import CharacterStates
 # Test level to test all mechanics
@@ -8,10 +8,11 @@ class Level_One(Level):
         self.lastLevel = None
         self.nextLevel = None
         # Generate the level base
-        self.GenerateLevel(2,4,2,2)
+        self.GenerateLevel(2,4,2,2, LevelClasses.Basic)
         self.playerRow = 0
         self.playerColumn = (self.levelMap[0].index(1)) + 1
-        self.populateEnemyList(2,2)
+        self.populateEnemyList(2,3)
+        self.populateTreasureList(1)
         self.levelExploreMsg = "%s peers ahead. In the distance there is an outcropping in the stone..." % self.player.name
 
     def EntranceMessage(self):
