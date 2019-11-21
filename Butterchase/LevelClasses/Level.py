@@ -249,7 +249,7 @@ class Level:
     
     def VisibleTrap(self):
         if self.levelClass == LevelClasses.Basic:
-            RandomTrap = BasicVisibleTraps[randint(0, len(BasicVisibleTraps))]
+            RandomTrap = BasicVisibleTraps[randint(0, (len(BasicVisibleTraps) -1))]
             RandomTrap.IsPlayerHit(self.player)
         elif self.levelClass == LevelClasses.Advanced:
             pass
@@ -258,7 +258,7 @@ class Level:
 
     def InvisibleTrap(self):
         if self.levelClass == LevelClasses.Basic:
-            RandomTrap = BasicInvisibleTraps[randint(0, len(BasicInvisibleTraps))]
+            RandomTrap = BasicInvisibleTraps[randint(0, (len(BasicInvisibleTraps) -1))]
             RandomTrap.IsPlayerHit(self.player)
         elif self.levelClass == LevelClasses.Advanced:
             pass
