@@ -2,7 +2,7 @@ from TrapClasses.Trap import Trap
 
 class SimplePit(Trap):
     def __init__(self):
-        Trap.__init__(0, 6, 1, 5, False, "Simple Pit")
+        Trap.__init__(self, 0, 6, 1, 5, False, "Simple Pit")
     # Method to be called if player is hurt by trap
     def PlayerHurt(self, player):
         msg = "As {0} steps forward the ground suddenly gives way, revealing a bit that they subsequently fall face-first in to. Ouch.".format(player.name)

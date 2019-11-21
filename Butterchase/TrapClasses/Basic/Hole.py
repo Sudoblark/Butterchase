@@ -2,7 +2,7 @@ from TrapClasses.Trap import Trap
 
 class Hole(Trap):
     def __init__(self):
-        Trap.__init__(1,1, 6, 12, True, "Hole")
+        Trap.__init__(self, 1,1, 6, 12, True, "Hole")
     # Method to be called if player is hurt by trap
     def PlayerHurt(self, player):
         msg = "{0} falls into a giant hole in the ground and makes quite a load 'argg' noise. They could see the hole, why did they walk into it...".format(player.name)

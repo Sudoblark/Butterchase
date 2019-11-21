@@ -14,6 +14,8 @@ class Level_One(Level):
         self.populateEnemyList(2,3)
         self.populateTreasureList(1)
         self.levelExploreMsg = "%s peers ahead. In the distance there is an outcropping in the stone..." % self.player.name
+        self.populateTraps(1, False)
+        self.populateTraps(1, True)
 
     def EntranceMessage(self):
         Message = "%s enters the cave's lobby. It's damp, dark and smelly. " % self.player.name

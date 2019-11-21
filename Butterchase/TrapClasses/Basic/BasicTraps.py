@@ -3,4 +3,5 @@ from TrapClasses.Basic.SimplePit import SimplePit
 from TrapClasses.Basic.SpikedPit import SpikedPit
 
 
-BasicTraps = [SimplePit(), SpikedPit(), Hole()]
+VisibleTraps = [Hole()]
+InvisibleTraps = [SimplePit(), SpikedPit()]
