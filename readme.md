@@ -24,32 +24,16 @@ git clone https://github.com/Sudoblark/Butterchase.git
 ```
 - Run game.py
 ```cmd
-c:\Users\Administrator\Documents\GitHub\Butterchase>py Butterchase\Game.py
+c:\Users\Administrator\Documents\GitHub\Dev\Butterchase\Butterchase>py game.py
 What is your character's name? Steve
 type help to get a list of actions
 
 Steve foolishly enters a dark cave, seeking adventure...
-> help
-dict_keys(['quit', 'help', 'status', 'rest', 'explore', 'flee', 'attack'])
-> explore
-Steve wanders
-> explore
-Steve wanders
-> explore
-Steve encounters Steve the test goblin!
-> attack
-Steve hurts Steve the test goblin!
-Steve executes Steve the test goblin!
-Steve feels stronger!
-> status
-Steve's health: 11/11
-Is Steve tired: False
-> flee
-Steve runs around hopelessly in circles for a while.
-Steve feels tired.
-> quit
-Steve has died of dysentery.
+
+Steve enters the cave's lobby. It's damp, dark and smelly. All around are unfamiliar faces, worn out places, worn out faces. Steve finds it kind of funny, they find it kind of sad. The level with a corridor is the first you'll ever have.
 ```
+
+Options within the game should be fairly self explanatory
 
 ## Mechanics
 - If the player is tired then they do half damage
@@ -167,6 +151,7 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 
 #### Optimisation
 - [ ] Separate out items into individual files, with one main file with the array similar to how traps are organised
+- [ ] Change entire game to use smarter controls: goDirection * x will move in x direction; equip item will equip the item; attack * x will attack x times
 
 
 #### Levels
