@@ -101,7 +101,7 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 ### ToDo
 
 #### General
-- [ ] Create a step array containing the level layout, e.g.:
+- [x] Create a step array containing the level layout, e.g.:
 
 [1,0,0,2,0,0,0,0,0]
 [0,0,2,0,]
@@ -120,15 +120,54 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 9 = Treasure
 10 = Visible trap
 
-- [ ] Add random map generation with options above
+- [ x Add random map generation with options above
 - [x] Add goUp and goDown options on levels to allow 2D navigation
 - [x] Also add goUp and goDown as recognise commands
 - [x] Add checker to base level that determines if player is on a tile with an enemy
 - [x] If on tile with enemy then randomly generate one with the appropriate type
 
+#### Content
+##### Traps
+- [ ] Create at least 5 basic visible traps, with 4 unique strings for each method
+- [ ] Create at least 5 basic invisible traps, with 4 unique strings for each method
+- [ ] Create at least 5 advanced visible traps, with 4 unique strings for each method
+- [ ] Create at least 5 advanced invisible traps, with 4 unique strings for each method
+- [ ] Create at least 5 serious visible traps, with 4 unique strings for each method
+- [ ] Create at least 5 serious invisible traps, with 4 unique strings for each method
+##### Player items
+- [ ] Create at least 5 basic weapons, with 4 unique strings for each method
+- [ ] Create at least 5 basic armours, with 4 unique strings for each method
+- [ ] Create at least 5 advanced weapons, with 4 unique strings for each method
+- [ ] Create at least 5 advanced armours, with 4 unique strings for each method
+- [ ] Create at least 5 serious weapons, with 4 unique strings for each method
+- [ ] Create at least 5 serious armours, with 4 unique strings for each method
+
+##### Enemy Items
+- [ ] Create at least 5 goblin weapons, with 4 unique strings for each method
+- [ ] Create at least 5 goblin armours, with 4 unique strings for each method
+- [ ] Create at least 5 goatman weapons, with 4 unique strings for each method
+- [ ] Create at least 5 goatman armours, with 4 unique strings for each method
+
+- [ ] Create at least 5 orc weapons, with 4 unique strings for each method
+- [ ] Create at least 5 orc armours, with 4 unique strings for each method
+- [ ] Create at least 5 skeleton weapons, with 4 unique strings for each method
+- [ ] Create at least 5 skeleton armours, with 4 unique strings for each method
+
+- [ ] Create at least 5 ogre weapons, with 4 unique strings for each method
+- [ ] Create at least 5 ogre armours, with 4 unique strings for each method
+- [ ] Create at least 5 troll weapons, with 4 unique strings for each method
+- [ ] Create at least 5 troll armours, with 4 unique strings for each method
+
+##### Levels
+- [ ] Create at least 10 unique levels, tied into each other for exit/entrance logic
 
 #### Error handling
 - [ ] Limit len of name so menu doesn't break
+- [ ] Implement checks for randint implementations to prevent infinite loops
+
+#### Optimisation
+- [ ] Separate out items into individual files, with one main file with the array similar to how traps are organised
+
 
 #### Levels
 - [ ] Add logic for if player moves to exit
@@ -147,7 +186,7 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 #### Inventory System
 - [x] Add evade mechanic
 - [x] Add base/adjusted attack to all characters
-- [ ] Create weapons and armour for each enemy class
+- [x] Create weapons and armour for each enemy class
 - [x] Have enemies equip random weapons and armour on spawn
 - [x] Create player weapons and armour
 - [x] Add weapons and armour to chests
