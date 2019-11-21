@@ -137,10 +137,10 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 
 
 #### Traps
-- [ ] Add checker to base level that determines if player is on tile with trap
-- [ ] Each level to contain trap method that has a list of traps and dice rolls to determine if player is "hit" by said trap
-- [ ] New trap base class with different types deviating from this to allow maximum future-proofing
-- [ ] Traps to have "visible" property, if visible then play can see. E.G. a great big hole in the group is pretty obvious
+- [x] Add checker to base level that determines if player is on tile with trap
+- [x] Each level to contain trap method that has a list of traps and dice rolls to determine if player is "hit" by said trap
+- [x] New trap base class with different types deviating from this to allow maximum future-proofing
+- [x] Traps to have "visible" property, if visible then play can see. E.G. a great big hole in the group is pretty obvious
 - [x] Set traps to be visible once discovered
 
 
