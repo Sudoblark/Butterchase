@@ -92,19 +92,31 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 [0,0,0,0,0,0,0,0,0,1]
 
 -1 = impassable
+
 0 = blank
+
 1 = exit
+
 2 = Goatman
+
 3 = Goblin
+
 4 = Orc
+
 5 = Skeleton
+
 6 = Ogre
+
 7 = Troll
+
 8 = Trap
+
 9 = Treasure
+
 10 = Visible trap
 
-- [ x Add random map generation with options above
+
+- [x] Add random map generation with options above
 - [x] Add goUp and goDown options on levels to allow 2D navigation
 - [x] Also add goUp and goDown as recognise commands
 - [x] Add checker to base level that determines if player is on a tile with an enemy
