@@ -137,18 +137,19 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 
 
 #### Traps
-- [ ] Add checker to base level that determines if player is on tile with trap
-- [ ] Each level to contain trap method that has a list of traps and dice rolls to determine if player is "hit" by said trap
-- [ ] New trap base class with different types deviating from this to allow maximum future-proofing
-- [ ] Traps to have "visible" property, if visible then play can see. E.G. a great big hole in the group is pretty obvious
+- [x] Add checker to base level that determines if player is on tile with trap
+- [x] Each level to contain trap method that has a list of traps and dice rolls to determine if player is "hit" by said trap
+- [x] New trap base class with different types deviating from this to allow maximum future-proofing
+- [x] Traps to have "visible" property, if visible then play can see. E.G. a great big hole in the group is pretty obvious
+- [x] Set traps to be visible once discovered
 
 
 #### Inventory System
 - [x] Add evade mechanic
 - [x] Add base/adjusted attack to all characters
 - [ ] Create weapons and armour for each enemy class
-- [ ] Have enemies equip random weapons and armour on spawn
-- [ ] Create player weapons and armour
+- [x] Have enemies equip random weapons and armour on spawn
+- [x] Create player weapons and armour
 - [x] Add weapons and armour to chests
 - [x] Each level to have list of possible treasure and dice rolls to determine what player recieved. If on a treasure tile the player always gets an item from a randomly generated list appropriate for the level 
 - [x] Use weapon and armour flavour text where appropriate
