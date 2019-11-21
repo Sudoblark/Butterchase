@@ -22,26 +22,31 @@ class Trap():
             player.health = player.health - damage
             # Check if player is dead
             if player.health <= 0:
-                self.PlayerKilled()
+                self.PlayerKilled(player)
             # Check if damage was dealt
             elif damage > 0:
-                self.PlayerHurt()
+                self.PlayerHurt(player)
             # Finally the only option left is for no damage to have been dealt
             else:
-                self.PlayerBlocked()
+                self.PlayerBlocked(player)
         # If player is not hit then call avoided method
         else:
-            self.PlayerAvoided()
+            self.PlayerAvoided(player)
+
+        # Set trap to be visible after discovery
+        self.visible = True
     # Method to be called if player is hurt by trap
-    def PlayerHurt(self):
+    def PlayerHurt(self, player):
         pass
     # Method to be called if player is killed by trap
-    def PlayerKilled(self):
+    def PlayerKilled(self, player):
         pass
     # Method to be called if player avoids trap
-    def PlayerAvoided(self):
+    def PlayerAvoided(self, player):
         pass
     # Method to be called if player triggers trap but is not damage
-    def PlayerBlocked(self):
+    def PlayerBlocked(self, player):
         pass
+    def GetRandomMessage(self,Array):
+        return Array[randint(0, len(Array) -1)]
 
