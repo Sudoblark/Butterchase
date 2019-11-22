@@ -1,4 +1,5 @@
 from enum import Enum
+from random import randint
 
 # Treasure type enum
 class TreasureTypes(Enum):
@@ -40,5 +41,8 @@ class Treasure():
     # Placeholder execution method, to be overwritten by instances of class
     def executionText(self, enemy):
         pass
+    def GetRandomMessage(self, Array):
+        return Array[randint(0, len(Array) -1)]
+
 
 

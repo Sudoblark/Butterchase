@@ -8,8 +8,8 @@ from EnemyClasses.Advanced.Skeleton import Skeleton
 from EnemyClasses.Serious.Troll import Troll
 from EnemyClasses.Serious.Ogre import Ogre
 from enum import Enum
-from TreasureClasses.Basic.PlayerItems import PlayerWeapons as BasicWeapons
-from TreasureClasses.Basic.PlayerItems import PlayerArmour as BasicArmour
+from TreasureClasses.Basic.Player.Items import Weapons as BasicWeapons
+from TreasureClasses.Basic.Player.Items import Armour as BasicArmour
 from TrapClasses.Basic.BasicTraps import VisibleTraps as BasicVisibleTraps
 from TrapClasses.Basic.BasicTraps import InvisibleTraps as BasicInvisibleTraps
 
