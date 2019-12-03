@@ -2,7 +2,19 @@ from PlayerClasses.Player import Player, Commands
 from LevelClasses.Level_Test import Level_Test
 from LevelClasses.Level_One import Level_One
 p = Player()
-p.name = input("What is your character's name? ")
+# Ask for player's name
+NameSet = False
+CharLimit = 25
+while NameSet == False:
+  TempName = input("What is your character's name? ")
+  if len(TempName) < CharLimit:
+    p.name = TempName
+    NameSet = True
+  else:
+    print("Please input a name less than {0} characters.".format(CharLimit))
+    print()
+
+
 print("type help to get a list of actions\n")
 print("%s foolishly enters a dark cave, seeking adventure..." % p.name)
 print("")

@@ -158,7 +158,7 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 - [ ] Create at least 10 unique levels, tied into each other for exit/entrance logic
 
 #### Error handling
-- [ ] Limit len of name so menu doesn't break
+- [x] Limit len of name so menu doesn't break
 - [ ] Implement checks for randint implementations to prevent infinite loops
 
 #### Optimisation
