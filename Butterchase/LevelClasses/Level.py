@@ -60,8 +60,8 @@ class Level:
         Counter = 0
         while Counter < numOfTraps:
             # Get a random row and column
-            TrapRow = randint(0, (len(self.levelMap)) -1)
-            TrapColumn = randint(0, (len(self.levelMap[0]) -1))
+            TrapRow = self.returnRandomIndex(self.levelMap, "Row")
+            TrapColumn = self.returnRandomIndex(self.levelMap[0], "Column")
             # Make tile is empty and player is not there
             if (self.levelMap[TrapRow][TrapColumn] == 0) & (self.playerRow != TrapRow) & (self.playerColumn != TrapColumn):
                 if Visible == True:
@@ -69,6 +69,28 @@ class Level:
                 else:
                     self.levelMap[TrapRow][TrapColumn] = 8
                 Counter += 1
+    def returnRandomIndex(self, List, Type):
+        # Genetate random row
+        # Note we do not do (len(self.levelMap) -1) as this can sometimes
+        # Generate 0 which then causes randint to go into an infinite loop
+        TrapIndex = randint(0, (len(List)))
+        try:
+            # Validate if random number is out of index
+            if Type == "Row":
+                LevelMapTest = self.levelMap[TrapIndex]
+            else:
+                LevelMapTest = self.levelMap[0][TrapIndex]
+            # If not out of index then return
+            return TrapIndex
+        except IndexError:
+            # If out of index then recursively run again
+            return self.returnRandomIndex(List, Type)
+        except:
+            # If an unexpected error then return appropriate last row or column
+            if Type == "Row":
+                return (len(self.levelMap) -1)
+            else:
+                return (len(self.levelMap[0]) -1)
     # Method that announces to the user that they're in the room
     def EntranceMessage(self):
         if self.alreadyEntered == False:

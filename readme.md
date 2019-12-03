@@ -162,7 +162,7 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 - [ ] Implement checks for randint implementations to prevent infinite loops
 
 #### Optimisation
-- [ ] Separate out items into individual files, with one main file with the array similar to how traps are organised
+- [x] Separate out items into individual files, with one main file with the array similar to how traps are organised
 - [ ] Change entire game to use smarter controls: goDirection * x will move in x direction; equip item will equip the item; attack * x will attack x times
 
 
