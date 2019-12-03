@@ -36,7 +36,8 @@ class Level:
     # Method to generate list of enemies for the level
     def populateEnemyList(self, number, Enemy):
         Counter = 0
-        while Counter < number:
+        FailCounter = 0
+        while (Counter < number) & (FailCounter < 51):
             # Get a random row and column
             EnemyRow = randint(0, (len(self.levelMap)) -1)
             EnemyColumn = randint(0, (len(self.levelMap[0]) -1))
@@ -44,11 +45,13 @@ class Level:
             if (self.levelMap[EnemyRow][EnemyColumn] == 0) & (self.playerRow != EnemyRow) & (self.playerColumn != EnemyColumn):
                 self.levelMap[EnemyRow][EnemyColumn] = Enemy
                 Counter += 1
+            else:
+                FailCounter += 1
     # method to populate treasure chests in level
     def populateTreasureList(self, numOfChests):
         Counter = 0
         FailCounter = 0
-        while Counter < numOfChests:
+        while (Counter < numOfChests)  & (FailCounter < 51):
             # Get a random row and column
             TreasureRow = randint(0, (len(self.levelMap)) -1)
             TreasureColumn = randint(0, (len(self.levelMap[0]) -1))
@@ -56,6 +59,8 @@ class Level:
             if (self.levelMap[TreasureRow][TreasureColumn] == 0) & (self.playerRow != TreasureRow) & (self.playerColumn != TreasureColumn):
                 self.levelMap[TreasureRow][TreasureColumn] = 9
                 Counter += 1
+            else:
+                FailCounter += 1
     # method to populate traps
     def populateTraps(self, numOfTraps, Visible):
         Counter = 0
