@@ -163,7 +163,7 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 
 #### Optimisation
 - [x] Separate out items into individual files, with one main file with the array similar to how traps are organised
-- [ ] Change entire game to use smarter controls: goDirection * x will move in x direction; equip item will equip the item; attack * x will attack x times
+- [ ] ~~Change entire game to use smarter controls: goDirection * x will move in x direction; equip item will equip the item; attack * x will attack x times~~
 
 
 #### Levels
@@ -203,6 +203,17 @@ c:\Users\Administrator\Documents\GitHub\Butterchase>
 
 #### Random events
 - [ ] When exiting a level have random events that may happen, requiring player input, before moving on to next level
+
+#### Parser
+- [ ] Replace current simple parser with intelligent one that allows for verb + noun + repitions logic
+- [ ] Implement ability to press arrow keys or similar to repeat the last command similar to CMD/terminal
+- [ ] Implement 'shadow' of previous command so that the following appears:
+```
+> attack
+STUFF
+> [attack]
+```
+But `[attack]` is removed when you start typing
 
 ## Acknowledgements
 - Robert Charles Levett-Millett for lending his creative writting to character names and level descriptions
