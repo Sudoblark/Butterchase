@@ -42,7 +42,7 @@ class Character:
         if (isTired) & (evaded == False) & (damage > 1):
             damage = damage // 2
         # Calculcate enemy new health if enemy did not evade and damage was dealt
-        if (evaded == False)  & damage > 0:
+        if (evaded == False)  & (damage > 0):
             enemy.health = enemy.health - damage
         # Print results
         self.print_damage(enemy, damage, evaded)
@@ -57,5 +57,5 @@ class Character:
         elif damage <= 0:
             enemy.armour.defenceFlavour(self)
         # Else
-        elif damage > 0:
+        elif damage >= 1:
             self.weapon.attackFlavour(enemy)
