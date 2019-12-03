@@ -8,8 +8,8 @@ from EnemyClasses.Advanced.Skeleton import Skeleton
 from EnemyClasses.Serious.Troll import Troll
 from EnemyClasses.Serious.Ogre import Ogre
 from enum import Enum
-from TreasureClasses.Basic.PlayerItems import PlayerWeapons as BasicWeapons
-from TreasureClasses.Basic.PlayerItems import PlayerArmour as BasicArmour
+from TreasureClasses.Basic.Player.Items import Weapons as BasicWeapons
+from TreasureClasses.Basic.Player.Items import Armour as BasicArmour
 from TrapClasses.Basic.BasicTraps import VisibleTraps as BasicVisibleTraps
 from TrapClasses.Basic.BasicTraps import InvisibleTraps as BasicInvisibleTraps
 
@@ -36,7 +36,8 @@ class Level:
     # Method to generate list of enemies for the level
     def populateEnemyList(self, number, Enemy):
         Counter = 0
-        while Counter < number:
+        FailCounter = 0
+        while (Counter < number) & (FailCounter < 51):
             # Get a random row and column
             EnemyRow = randint(0, (len(self.levelMap)) -1)
             EnemyColumn = randint(0, (len(self.levelMap[0]) -1))
@@ -44,10 +45,13 @@ class Level:
             if (self.levelMap[EnemyRow][EnemyColumn] == 0) & (self.playerRow != EnemyRow) & (self.playerColumn != EnemyColumn):
                 self.levelMap[EnemyRow][EnemyColumn] = Enemy
                 Counter += 1
+            else:
+                FailCounter += 1
     # method to populate treasure chests in level
     def populateTreasureList(self, numOfChests):
         Counter = 0
-        while Counter < numOfChests:
+        FailCounter = 0
+        while (Counter < numOfChests)  & (FailCounter < 51):
             # Get a random row and column
             TreasureRow = randint(0, (len(self.levelMap)) -1)
             TreasureColumn = randint(0, (len(self.levelMap[0]) -1))
@@ -55,10 +59,13 @@ class Level:
             if (self.levelMap[TreasureRow][TreasureColumn] == 0) & (self.playerRow != TreasureRow) & (self.playerColumn != TreasureColumn):
                 self.levelMap[TreasureRow][TreasureColumn] = 9
                 Counter += 1
+            else:
+                FailCounter += 1
     # method to populate traps
     def populateTraps(self, numOfTraps, Visible):
         Counter = 0
-        while Counter < numOfTraps:
+        FailCounter = 0
+        while (Counter < numOfTraps) & (FailCounter < 51):
             # Get a random row and column
             TrapRow = randint(0, (len(self.levelMap)) -1)
             TrapColumn = randint(0, (len(self.levelMap[0]) -1))
@@ -69,6 +76,8 @@ class Level:
                 else:
                     self.levelMap[TrapRow][TrapColumn] = 8
                 Counter += 1
+            else:
+                FailCounter += 1
     # Method that announces to the user that they're in the room
     def EntranceMessage(self):
         if self.alreadyEntered == False:

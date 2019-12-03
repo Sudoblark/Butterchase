@@ -4,7 +4,8 @@ from random import randint
 from BaseClasses.CharacterStates import CharacterStates
 from BaseClasses.Character import Character
 from BaseClasses.Enemy import Enemy
-from TreasureClasses.Basic import PlayerItems
+# Required for weapons and armour
+from TreasureClasses.Basic.Player.Items import Weapons, Armour
 from TreasureClasses.PlayerInventory import PlayerInventory
 
 
@@ -33,9 +34,9 @@ class Player(Character):
         self.evadeAttack = [0, self.adjustedEvadeChance]
         
         # equip random items
-        weaponTemp = PlayerItems.PlayerWeapons[randint(0,(len(PlayerItems.PlayerWeapons)-1))]
+        weaponTemp = Weapons[randint(0,(len(Weapons)-1))]
         self.weapon = weaponTemp
-        armourTemp = PlayerItems.PlayerArmour[randint(0,(len(PlayerItems.PlayerArmour) -1))]
+        armourTemp = Armour[randint(0,(len(Armour) -1))]
         self.armour = armourTemp
         self.weapon.player = self
         self.armour.player = self

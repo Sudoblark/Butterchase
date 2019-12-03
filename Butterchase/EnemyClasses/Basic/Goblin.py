@@ -1,6 +1,6 @@
 from BaseClasses.Enemy import Enemy
 from EnemyClasses.ClassSheets import Util
-from TreasureClasses.Basic import GoblinItems
+from TreasureClasses.Basic.Goblin.Items import Weapons, Armour
 from random import randint
 
 class Goblin(Enemy):
@@ -9,8 +9,8 @@ class Goblin(Enemy):
         Enemy.__init__(self, player, Name, 1, 10, 1, 5, True, row, column, 3)
 
         # equip random items
-        self.weapon = GoblinItems.GoblinWeapons[randint(0,(len(GoblinItems.GoblinWeapons)-1))]
-        self.armour = GoblinItems.GoblinArmour[randint(0,(len(GoblinItems.GoblinArmour) -1))]
+        self.weapon = Weapons[randint(0,(len(Weapons)-1))]
+        self.armour = Armour[randint(0,(len(Armour) -1))]
         self.weapon.player = self
         self.armour.player = self
         self.weapon.equip()
